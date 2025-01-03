@@ -1,0 +1,192 @@
+body {
+  margin: 0;
+  padding: 0;
+  touch-action: none;
+  overflow: hidden;
+  background-color: rgb(21, 27, 26);
+  font-weight: 500;
+  font-family: "Pixelify Sans", system-ui;
+}
+
+#canvas {
+  border: darkblue 5px solid;
+  background-color: rgb(21, 27, 26);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  z-index: -1;
+}
+
+.gameScore {
+  color: gold;
+  font-size: 2.2rem;
+  position: absolute;
+  letter-spacing: -0.5px;
+  left: 95%;
+  top: 8%;
+  transform: translate(-50%, -50%);
+  height: 75px;
+  width: 150px;
+}
+
+.letterMessage {
+  position: absolute;
+  left: 50%;
+  top: 200%;
+  z-index: 2;
+  font-size: 30px;
+  border: #a06531 solid 7.5px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: translate(-50%, -50%);
+  height: 85%;
+  width: 85%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: top 0.4s ease-out;
+}
+
+.letterContainer {
+  height: 88%;
+  width: 80%;
+  color: wheat;
+  padding: 3% 0;
+}
+
+.letterCloseBtn {
+  width: 80%;
+  text-align: center;
+  height: 12%;
+  color: wheat;
+  animation: letterColorChange 1.75s infinite ease-in-out;
+}
+
+.bannerContainer {
+  transition: top 0.4s ease-out;
+  color: #a06531;
+  font-size: 2rem;
+  position: absolute;
+  letter-spacing: -0.5px;
+  left: 50%;
+  top: -50%;
+  transform: translate(-50%, -50%);
+  max-width: 340px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 35/11;
+  background: url('/HUD/banner.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 55%;
+  width: 70%;
+  margin-top: -10px;
+}
+
+.padStyle {
+  background-color: rgba(245, 222, 179, 0.1);
+  border: 2px white solid;
+}
+
+.padStyle:active {
+  background-color: rgba(245, 222, 179, 0.3);
+}
+
+.arrowContiner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    ". up ."
+    "left . right"
+    ". down .";
+  height: 150px;
+  width: 150px;
+  position: absolute;
+  top: calc(100% - 165px);
+  left: 15px;
+}
+
+.actionContiner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    ". . switch"
+    "attack attack potion"
+    "attack attack .";
+  height: 150px;
+  width: 150px;
+  position: absolute;
+  top: calc(100% - 160px);
+  right: 15px;
+}
+
+.up {
+  grid-area: up;
+  border-radius: 10px;
+}
+
+.down {
+  grid-area: down;
+  border-radius: 10px;
+}
+
+.left {
+  grid-area: left;
+  border-radius: 10px;
+}
+
+.right {
+  grid-area: right;
+  border-radius: 10px;
+}
+
+.potion {
+  margin: 12px 0 -12px 0;
+  grid-area: potion;
+  border-radius: 50%;
+}
+
+.switch {
+  margin: 5px 0 -5px 0;
+  grid-area: switch;
+  border-radius: 50%;
+}
+
+.attack {
+  margin: 10px;
+  grid-area: attack;
+  border-radius: 50%;
+}
+
+@keyframes letterColorChange {
+  0% {
+    color: transparent;
+    transform: scale(1);
+  }
+
+  50% {
+    color: wheat;
+    transform: scale(1.075);
+  }
+
+  100% {
+    color: transparent;
+    transform: scale(1);
+  }
+}
