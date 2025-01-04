@@ -85,32 +85,35 @@ export class Enemy extends Living {
       this.positionY + this.proximity > playerY &&
       this.positionY - this.proximity < playerY
     ) {
-      this.showBar = true;
-      this.moving = true;
-      this.idleCounter = 0;
+      if (this.resistance % 1.25 === 0) {
 
-      if (this.hideBarTimeout) {
-        clearTimeout(this.hideBarTimeout);
-        this.hideBarTimeout = null;
-      }
+        this.showBar = true;
+        this.moving = true;
+        this.idleCounter = 0;
 
-      switch (this.getDirection(playerX, playerY)) {
-        case Direction.down:
-          this.direction = Direction.down;
-          this.positionY += this.movementSpeed;
-          break;
-        case Direction.up:
-          this.direction = Direction.up;
-          this.positionY -= this.movementSpeed;
-          break;
-        case Direction.left:
-          this.direction = Direction.left;
-          this.positionX -= this.movementSpeed;
-          break;
-        case Direction.right:
-          this.direction = Direction.right;
-          this.positionX += this.movementSpeed;
-          break;
+        if (this.hideBarTimeout) {
+          clearTimeout(this.hideBarTimeout);
+          this.hideBarTimeout = null;
+        }
+
+        switch (this.getDirection(playerX, playerY)) {
+          case Direction.down:
+            this.direction = Direction.down;
+            this.positionY += this.movementSpeed;
+            break;
+          case Direction.up:
+            this.direction = Direction.up;
+            this.positionY -= this.movementSpeed;
+            break;
+          case Direction.left:
+            this.direction = Direction.left;
+            this.positionX -= this.movementSpeed;
+            break;
+          case Direction.right:
+            this.direction = Direction.right;
+            this.positionX += this.movementSpeed;
+            break;
+        }
       }
     } else {
       this.moving = false;
@@ -118,7 +121,7 @@ export class Enemy extends Living {
         this.hideBarTimeout = setTimeout(() => {
           this.hideBarTimeout = null;
           this.showBar = false;
-        }, 2500)
+        }, 3000)
       }
     }
     if (this.resistance) {
@@ -163,6 +166,5 @@ export class Enemy extends Living {
       Music.playAudio('hit')
       eventEmmiter.emit(EventMaping.ANIMATION, [ani, x, y]);
     }
-
   }
 }

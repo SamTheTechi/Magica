@@ -7,6 +7,6 @@ export const NpcMetaData = {
     range: 0,
     height: 16,
     width: 16,
-    scalingFactor: 3.4,
+    scalingFactor: 3.6,
   }
 }

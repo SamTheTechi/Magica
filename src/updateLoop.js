@@ -14,7 +14,7 @@ export const UpdateGameLoop = (camera) => {
   let Item = ReadGameObjectArray().filter((obj) => obj.type === 'item')
   let Weather = ReadGameObjectArray().filter((obj) => obj.type === 'weather');
   let Animals = ReadGameObjectArray().filter((obj) => obj.type === 'animals');
-  let NPC = ReadGameObjectArray().filter((obj) => obj.type === 'npc');
+  let Npc = ReadGameObjectArray().filter((obj) => obj.type === 'npc');
   let Projectile = ReadGameObjectArray().filter((obj) => obj.type === 'projectile');
   let Animation = ReadGameObjectArray().filter((obj) => obj.type === 'animation')
 
@@ -27,9 +27,6 @@ export const UpdateGameLoop = (camera) => {
     drops.draw(camera)
   })
 
-  NPC.forEach((npc) => {
-    npc.draw(camera);
-  })
 
 
   Projectile.forEach((proj) => {
@@ -56,6 +53,13 @@ export const UpdateGameLoop = (camera) => {
   })
   Player.forEach((plr) => {
     plr.draw(camera);
+
+    Npc.forEach((npc) => {
+      npc.draw(camera);
+      if (collision(plr.collisionBoundries(), npc.collisionBoundries())) {
+        eventEmmiter.emit(EventMaping.COLLISION_BOUNDARY, collisionDirection(plr.collisionBoundries(), npc.collisionBoundries()))
+      }
+    })
     Enemy.forEach((eny) => {
       eny.draw(camera)
 
@@ -91,7 +95,7 @@ export const UpdateGameLoop = (camera) => {
             item.dead = true;
             break;
           case 'food':
-            eventEmmiter.emit(EventMaping.COLLISION_ITEM_FOOD, item.index)
+            eventEmmiter.emit(EventMaping.COLLISION_ITEM_FOOD, item.index);
             item.dead = true;
             break;
           case 'weapon':

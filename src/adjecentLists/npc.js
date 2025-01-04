@@ -6,7 +6,7 @@ export const NPCSpawnList = {
   dustVale: [
   ],
   elderWood: [
-    new Position('monk', 1500, 450)
+    new Position('monk', 1500, 470)
   ],
   emeraldRift: [
   ],

@@ -18,8 +18,8 @@ export class Player extends Living {
     this.inventry = [];
     this.movementSpeed = 8;
     this.moving = false;
-    this.hp = 1;
-    this.potion = 0;
+    this.hp = 12;
+    this.potion = 1;
     this.movementRestriction = {
       up: true,
       down: true,

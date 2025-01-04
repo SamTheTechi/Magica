@@ -22,4 +22,7 @@ export const preventDefaultBehavior = async () => {
       event.preventDefault();
     }
   }, { passive: false })
+  window.addEventListener('touchmove', (event) => {
+    event.preventDefault();
+  });
 };

@@ -6,9 +6,8 @@ import { Camera, Hero } from './declare';
 import { preventDefaultBehavior } from './util/preventKeys';
 import { touchPads } from './ui/touchpad';
 import { detectDevice } from './util/detectDevice';
-import { detectOrientaion } from './util/detectOrientaion';
 
-const FPS = 60;
+const FPS = 59;
 const interval = 1000 / FPS;
 let lastTime = 0;
 
@@ -26,9 +25,7 @@ const animation = (currentTime) => {
 
 
 window.onload = async () => {
-  if (detectDevice()) {
-    touchPads();
-  }
+  if (detectDevice()) touchPads();
   EventListener();
   animation();
   keybindings();

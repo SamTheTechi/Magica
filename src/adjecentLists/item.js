@@ -30,7 +30,7 @@ export const ItemSpawnList = {
   frostSpireLake: [],
   hammerFlame: [
     new Position('spear', 280, 250),
-    new Position('spear', 680, 250)
+    new Position('axe', 685, 280)
   ],
   home: [
     new Position('yakitori', 1230, 1010, 1),

@@ -1,16 +1,17 @@
 import { detectOrientaion } from "../util/detectOrientaion";
+import { detectDevice } from "../util/detectDevice";
 
 const canvas = document.querySelector('#canvas');
 export const ctx = canvas.getContext('2d');
-
+const adjecement = detectDevice() ? 1.4 : 1.7;
+const ScalingFactor = window.devicePixelRatio / adjecement || adjecement;
+let ratio = 9 / 16;
 
 const updateCanvasSize = () => {
-  const ratio = 2 / 3;
-  const ScalingFactor = window.devicePixelRatio / 1.55 || 1.55;
-  let windowHeight = window.innerHeight * ScalingFactor;
-  let windowWidth = window.innerWidth * ScalingFactor;
-  let newHeight;
-  let newWidth;
+  const windowHeight = window.innerHeight * ScalingFactor;
+  const windowWidth = window.innerWidth * ScalingFactor;
+
+  let newHeight, newWidth;
 
   if (windowHeight <= windowWidth) {
     newHeight = windowHeight;
@@ -26,15 +27,24 @@ const updateCanvasSize = () => {
 
   canvas.style.height = `${newHeight / ScalingFactor - 5}px`
   canvas.style.width = `${newWidth / ScalingFactor}px`
+  resetCanvasTransform()
 };
 
 const positionChange = () => {
   if (detectOrientaion()) {
-    canvas.style.top = "40%"
+    ratio = 3 / 4;
+    canvas.style.top = "40%";
   } else {
-    canvas.style.top = "50%"
+    ratio = 9 / 16;
+    canvas.style.top = "50%";
   }
+  resetCanvasTransform()
 }
+
+const resetCanvasTransform = () => {
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.translate(0, 0);
+};
 
 window.addEventListener('resize', updateCanvasSize)
 window.addEventListener('orientationchange', positionChange)
