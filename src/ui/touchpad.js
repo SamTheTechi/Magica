@@ -1,3 +1,4 @@
+import { container } from "../store/canvas";
 import { eventEmmiter } from "../util/eventBinding";
 import { EventMaping } from "../util/eventBinding";
 
@@ -64,8 +65,8 @@ export const touchPads = () => {
   attackPad.className = 'padStyle attack'
 
 
-  document.body.appendChild(arrowPad);
-  document.body.appendChild(actionPad);
+  container.appendChild(arrowPad);
+  container.appendChild(actionPad);
   arrowPad.appendChild(upArrowPad)
   arrowPad.appendChild(downArrowPad)
   arrowPad.appendChild(leftArrowPad)

@@ -1,6 +1,8 @@
+import { container } from "../store/canvas";
+
 const gameScore = document.createElement('div');
 gameScore.className = `gameScore`;
-document.body.appendChild(gameScore);
+container.appendChild(gameScore);
 
 export const UpdateScore = (score) => {
   gameScore.innerHTML = `${score}`

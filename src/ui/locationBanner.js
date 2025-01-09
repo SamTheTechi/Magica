@@ -1,9 +1,11 @@
+import { container } from "../store/canvas";
+
 const bannerContainer = document.createElement(`div`);
 const banner = document.createElement('div');
 bannerContainer.className = `bannerContainer`;
 banner.className = `banner`
 bannerContainer.appendChild(banner);
-document.body.appendChild(bannerContainer);
+container.appendChild(bannerContainer);
 
 export const ShowBanner = (name) => {
   const updated = name.split('').map((char, i) => {

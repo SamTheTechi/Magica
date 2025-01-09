@@ -1,3 +1,5 @@
+import { container } from "../store/canvas";
+
 const letterMessage = document.createElement('div');
 const letterContainer = document.createElement('div');
 const letterCloseBtn = document.createElement('div');
@@ -6,7 +8,7 @@ letterContainer.className = `letterContainer`;
 letterCloseBtn.className = `letterCloseBtn`;
 letterMessage.appendChild(letterContainer);
 letterMessage.appendChild(letterCloseBtn)
-document.body.appendChild(letterMessage);
+container.appendChild(letterMessage);
 
 export let canClose = false;
 

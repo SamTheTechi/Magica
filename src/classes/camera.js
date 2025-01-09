@@ -4,10 +4,13 @@ export class View {
   constructor() {
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
-    this.worldWidth = 2560;
-    this.worldHeight = 1920;
     this.X = 0;
     this.Y = 0;
+  }
+
+  reset() {
+    this.canvasWidth = canvasWidth;
+    this.canvasHeight = canvasHeight;
   }
 
   update(playerY, playerX) {
