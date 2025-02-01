@@ -9,43 +9,46 @@ body {
 }
 
 #canvas {
+  height: 90%;
   border: rgba(245, 222, 179, 0.2) 2px solid;
   background-color: rgb(21, 27, 26);
-  height: 400px;
-  width: 600px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   border-radius: 20px;
-  z-index: -1;
+  z-index: 0;
+}
+
+.scoreContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: end;
+  align-items: start;
 }
 
 .gameScore {
   color: gold;
   font-size: 2.2rem;
-  position: absolute;
   letter-spacing: -0.5px;
-  left: 95%;
-  top: 8%;
   transform: translate(-50%, -50%);
-  height: 75px;
-  width: 150px;
 }
 
 .letterMessage {
   position: absolute;
   left: 50%;
   top: 200%;
-  z-index: 2;
+  z-index: 1;
+  height: 10px;
+  width: 20px;
   font-size: 30px;
   border: #a06531 solid 7.5px;
   border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
   transform: translate(-50%, -50%);
-  height: 85%;
-  width: 85%;
-  max-width: 800px;
   display: flex;
   flex-direction: column;
   justify-content: center;
