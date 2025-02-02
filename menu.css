@@ -1,0 +1,120 @@
+.landing {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  left: 50%;
+  top: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  backdrop-filter: blur(20px);
+  padding: 10% 10% 20% 10%;
+  transition: opacity 0.5s, z-index 1s;
+}
+
+.landing.hide {
+  opacity: 0;
+  z-index: -10;
+}
+
+.landing .tit {
+  font-size: 7rem;
+  animation: main 1s infinite ease-in-out alternate;
+}
+
+.landing .des {
+  margin-top: -1rem;
+  font-size: 2rem;
+  animation: main 1s infinite ease-in-out alternate;
+}
+
+.landing .cont {
+  display: none;
+  font-size: 1rem;
+  color: #a06531;
+}
+
+.selector {
+  position: absolute;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  backdrop-filter: blur(15px) grayscale(20%);
+  opacity: 1;
+  transition: opacity 0.5s, z-index 1s;
+}
+
+.hide {
+  opacity: 0;
+  z-index: -15;
+}
+
+.selector .container {
+  height: 50%;
+  margin-top: -3rem;
+}
+
+.selector div .head {
+  font-size: 2rem;
+  color: wheat;
+  padding-bottom: 10px;
+}
+
+.selector div .char {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.faceset img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 4px solid #a06531;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  opacity: 0.9;
+}
+
+.faceset img:hover {
+  opacity: 1;
+  box-shadow: 1px 2px 4px #a06531;
+  transform: scale(1.1);
+}
+
+@keyframes main {
+  0% {
+    color: #a06531;
+    transform: scale(1);
+  }
+
+  100% {
+    color: wheat;
+    transform: scale(1.075);
+    letter-spacing: 1.5px;
+  }
+}
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: wheat;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  filter: blue(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+  z-index: 9;
+}

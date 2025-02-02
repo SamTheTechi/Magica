@@ -9,18 +9,35 @@
     rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <link rel="styleSheet" href="menu.css">
   <link rel="styleSheet" href="style.css">
-  <script type="module" src="/src/menu/main.js"></script>
+  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="/src/menu.js"></script>
   <title>Magica</title>
 </head>
 
 <body>
+  <div id="loading-screen">Loading...</div>
   <div id="continer">
     <canvas id="canvas"></canvas>
-    <button id="button">Go Fullscreen</button>
+  </div>
+  <div class="landing">
+    <div class="tit">MAGICA!</div>
+    <div class="des">The Adventure</div>
+    <div class="cont">Press to continue</div>
+  </div>
+  <div class="selector">
+    <div class="container">
+      <div class="head">Select Character</div>
+      <div class="char">
+        <div class="faceset" data-value="Princess"><img src="/Actor/Characters/Princess/Faceset.png"></div>
+        <div class="faceset" data-value="Noble"><img src="/Actor/Characters/Noble/Faceset.png"></div>
+        <div class="faceset" data-value="Ninja"><img src="/Actor/Characters/Ninja/Faceset.png"></div>
+        <div class="faceset" data-value="Samurai"><img src="/Actor/Characters/Samurai/Faceset.png"></div>
+      </div>
+    </div>
   </div>
 </body>
 
-<script type="module" src="/src/game/main.js"></script>
 
 </html>

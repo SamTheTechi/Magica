@@ -72,7 +72,7 @@ body {
 }
 
 .bannerContainer {
-  transition: top 0.4s ease-out;
+  transition: top 0.45s ease-out;
   color: #a06531;
   font-size: 2rem;
   position: absolute;
@@ -113,6 +113,7 @@ body {
 
 .arrowContiner {
   display: grid;
+  z-index: 4;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-template-areas:
@@ -128,6 +129,7 @@ body {
 
 .actionContiner {
   display: grid;
+  z-index: 4;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-template-areas:
