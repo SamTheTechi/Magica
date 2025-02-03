@@ -9,7 +9,7 @@ import { Music } from "../declare";
 export class Player extends Living {
   constructor(image, positionX, positionY) {
     super(positionX, positionY);
-    this.positionX = 150;
+    this.positionX = 1000;
     this.positionY = 750;
     this.resistance = 0;
     this.width = 16;
@@ -30,7 +30,9 @@ export class Player extends Living {
     this.shadowImage = Object.assign(new Image(), { src: `./Actor/Characters/Shadow.png` });
     this.image = Object.assign(new Image(), { src: `${image}` });
     this.potionImage = Object.assign(new Image(), { src: `./Items/Potion/LifePot.png` })
-    this.type = 'player'
+    this.type = 'player';
+    this.idleCounter = 0;
+    this.idle = true;
   }
 
   addWeapon(weapon) {
@@ -69,6 +71,7 @@ export class Player extends Living {
       Music.playAudio('damage')
     } else if (this.hp <= 0) {
       this.dead = true;
+      eventEmmiter.emit(EventMaping.GAME_OVER);
     }
   }
 
@@ -107,11 +110,30 @@ export class Player extends Living {
 
   draw() {
     if (this.resistance) this.resistance -= 1;
+
     const drawX = this.canvasWidth / 2;
     const drawY = this.canvasHeight / 2;
+
     if (this.inventry.length > 0)
       this.equipedWeapon.draw(this.positionX, this.positionY, this.direction);
+
     console.log(this.positionX, this.positionY);
+
+    if (this.idleCounter >= 350) {
+      this.frame = 6;
+      if (this.idle) {
+        Music.playAudio('idle')
+      }
+      this.idle = false;
+      this.direction = 2;
+      const time = setTimeout(() => {
+        this.idle = true;
+        this.direction = Direction.down;
+        this.idleCounter = 0;
+        clearTimeout(time);
+      }, 2000)
+    }
+
     ctx.drawImage(
       this.shadowImage,
       0,
@@ -119,7 +141,7 @@ export class Player extends Living {
       this.width,
       this.height,
       drawX + this.width / 2,
-      drawY + this.height * 2.7,
+      drawY + this.height * 2.7 + 1,
       this.width * MagnificationFactor,
       this.height * MagnificationFactor
     );
@@ -137,6 +159,8 @@ export class Player extends Living {
     )
     this.drawPotion()
     this.drawHp()
+
+    this.idleCounter++;
     if (this.moving) {
       switch (this.direction) {
         case Direction.down:
@@ -145,6 +169,7 @@ export class Player extends Living {
             this.movementRestriction.right = true;
             this.movementRestriction.left = true;
             this.movementRestriction.up = true;
+            this.idleCounter = 0;
           }
           break;
         case Direction.up:
@@ -153,6 +178,7 @@ export class Player extends Living {
             this.movementRestriction.right = true;
             this.movementRestriction.left = true;
             this.movementRestriction.down = true;
+            this.idleCounter = 0;
           }
           break;
         case Direction.left:
@@ -161,6 +187,7 @@ export class Player extends Living {
             this.movementRestriction.right = true;
             this.movementRestriction.down = true;
             this.movementRestriction.up = true;
+            this.idleCounter = 0;
           }
           break;
         case Direction.right:
@@ -169,6 +196,7 @@ export class Player extends Living {
             this.movementRestriction.down = true;
             this.movementRestriction.left = true;
             this.movementRestriction.up = true;
+            this.idleCounter = 0;
           } break;
         default:
       }

@@ -31,8 +31,8 @@ export const AnimalsSpawnList = {
     new Position('frog', 1730, 1660),
     new Position('frog', 1550, 900),
     new Position('pig', 2280, 1250),
-    new Position('pig', 230, 660),
-    new Position('horse', 250, 1400)
+    new Position('pig', 260, 860),
+    new Position('horse', 250, 1440)
   ],
   frostSpireLake: [],
   home: [
@@ -52,8 +52,6 @@ export const AnimalsSpawnList = {
     new Position('frog', 1200, 1620),
     new Position('blackChicken', 630, 1200),
   ],
-  silentVeilTunnel: [
-  ],
   woodPass: [
     new Position('horse', 710, 360),
     new Position('horse', 340, 1780),
@@ -64,11 +62,15 @@ export const AnimalsSpawnList = {
     new Position('orangeLion', 2320, 850),
   ],
   chillwindRoad: [
-    new Position('whiteChicken', 500, 670),
+    new Position('whiteChicken', 450, 660),
     new Position('whiteLion', 900, 105),
     new Position('horse', 1180, 1580),
   ],
   frostcliffRoad: [
+    new Position('horsem', 2120, 230),
+    new Position('horsem', 1000, 1630),
+    new Position('dog', 1900, 1180),
+    new Position('cow', 1390, 830),
   ],
 }
 

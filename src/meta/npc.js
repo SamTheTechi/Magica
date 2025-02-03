@@ -65,8 +65,8 @@ export const NpcMetaData = {
   snow: {
     name: 'snow',
     Image: Object.assign(new Image(), { src: '/Actor/Npc/Snow/SpriteSheet.png' }),
-    speed: 1,
-    range: 100,
+    speed: 0.9,
+    range: 80,
     height: 16,
     width: 16,
     scalingFactor: 4,
@@ -74,11 +74,11 @@ export const NpcMetaData = {
   snowbaby: {
     name: 'snowbaby',
     Image: Object.assign(new Image(), { src: '/Actor/Npc/Snow/SpriteSheet.png' }),
-    speed: 1,
-    range: 100,
+    speed: 1.2,
+    range: 60,
     height: 16,
     width: 16,
-    scalingFactor: 3.4,
+    scalingFactor: 3.3,
   },
   villager1: {
     name: 'villager1',

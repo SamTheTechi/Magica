@@ -7,6 +7,9 @@ const charScreen = document.querySelector(".selector")
 const loading = document.querySelector("#loading-screen")
 const container = document.getElementById('continer');
 const conti = document.querySelector('.cont');
+const gameOver = document.querySelector('.gameover');
+const charlogo = document.querySelector('.charlogo');
+const charimg = document.querySelector('.charimg');
 
 const contir = () => {
   if (!detectDevice()) {
@@ -20,7 +23,7 @@ chars.forEach(char => {
   char.addEventListener("click", () => {
     const foo = char.dataset.value;
     charScreen.classList.add("hide")
-
+    charimg.src = `./Actor/Characters/${foo}/Faceset.png`;
     if (!document.fullscreenElement) {
       container.requestFullscreen().catch((err) => {
         console.error(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
@@ -44,4 +47,12 @@ const time = setInterval(() => {
 landing.addEventListener('click', () => {
   landing.classList.add("hide");
 });
+
+eventEmmiter.on(EventMaping.GAME_OVER, () => {
+  gameOver.classList.add('show');
+  const time = setTimeout(() => {
+    window.location.reload();
+    clearTimeout(time);
+  }, 9000)
+})
 

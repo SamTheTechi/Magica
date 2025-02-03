@@ -43,7 +43,7 @@ export class Game {
       this.nodes[Name] = new Node(Name, DataArray, Weather, Image, neighbours, audio)
     }
     this.value = true;
-    this.currentNode = this.nodes['ravenFort'];
+    this.currentNode = this.nodes['home'];
     this.generateMap()
     this.generateAdjecentList();
   }

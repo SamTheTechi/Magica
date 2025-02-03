@@ -17,6 +17,15 @@ export const AnimalMetaData = {
     height: 16,
     width: 23,
   },
+  horsem: {
+    name: 'horsem',
+    Image: Object.assign(new Image(), { src: './Actor/Animals/Horse/SpriteSheet2.png' }),
+    speed: 1.2,
+    size: true,
+    range: 175,
+    height: 16,
+    width: 23,
+  },
   orangeLion: {
     name: 'orangeLion',
     Image: Object.assign(new Image(), { src: './Actor/Animals/Lion/SpriteSheetOrange2.png' }),

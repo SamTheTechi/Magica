@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
   padding: 10% 10% 20% 10%;
   transition: opacity 0.5s, z-index 1s;
 }
@@ -117,4 +117,50 @@
   justify-content: center;
   font-size: 3em;
   z-index: 9;
+}
+
+.gameover {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  left: 50%;
+  top: 50%;
+  z-index: -99;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  backdrop-filter: blur(20px) grayscale(30%) brightness(90%);
+  padding: 10% 10% 20% 10%;
+  transition: opacity 1.5s, z-index 0.5s;
+  opacity: 0;
+}
+
+.gameover.show {
+  z-index: 11;
+  opacity: 1;
+}
+
+.gameover .tit {
+  font-size: 5rem;
+  animation: over 1s infinite ease-in-out alternate;
+}
+
+.gameover .gcont {
+  font-size: 2rem;
+  color: #a06531;
+}
+
+@keyframes over {
+  0% {
+    color: #a06531;
+    transform: scale(1);
+  }
+
+  100% {
+    color: red;
+    transform: scale(1.075);
+    letter-spacing: 1.5px;
+  }
 }

@@ -56,7 +56,7 @@ export class NPC extends Living {
       this.width,
       this.height,
       this.positionX + this.width / 2 - camera.X,
-      this.positionY + this.height * 2.7 - camera.Y,
+      this.positionY + this.height * 2.7 - camera.Y + 2,
       this.width * this.scalingFactor,
       this.height * this.scalingFactor
     );

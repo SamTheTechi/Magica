@@ -151,7 +151,7 @@ export const MapMetaData = {
     DataArray: ChillwindRoadDataArray,
     Image: Object.assign(new Image(), { src: './Map/chillwindRoad.png' }),
     Weather: 'leaf',
-    neighbours: [new Position('ravenFort', 2350, 1650, Direction.left), new Position('cliffPass', 35, 115, Direction.right)],
+    neighbours: [new Position('ravenFort', 2350, 1650, Direction.left), new Position('cliffPass', 35, 280, Direction.right)],
     audio: 'adventure',
   },
   cliffPass: {
@@ -167,7 +167,7 @@ export const MapMetaData = {
     DataArray: FrostcliffRoadDataArray,
     Image: Object.assign(new Image(), { src: './Map/frostcliffRoad.png' }),
     Weather: 'snow',
-    neighbours: [new Position('cliffPass', 520, 130, Direction.left), new Position('igloo', 290, 450, Direction.up), new Position('frostSpireLake', 200, 1600, Direction.right)],
+    neighbours: [new Position('cliffPass', 1150, 280, Direction.left), new Position('igloo', 290, 450, Direction.up), new Position('frostSpireLake', 200, 1600, Direction.right)],
     audio: 'adventure2',
   },
   frostSpireLake: {

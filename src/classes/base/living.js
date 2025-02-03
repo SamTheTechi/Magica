@@ -10,7 +10,6 @@ export class Living extends Base {
     this.height = null;
     this.width = null;
     this.idleCounter = 0;
-    this.idleDuration = 300;
   }
 
 }

@@ -82,7 +82,7 @@ export const PlayerAudio = [
       `/Sound/Player/idle4.wav`,
       `/Sound/Player/idle5.wav`,
     ],
-    volume: 0.6,
+    volume: 0.5,
     loop: false,
   },
 ]
