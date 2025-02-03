@@ -19,6 +19,7 @@ export class NPC extends Living {
     this.startX = positionX;
     this.startY = positionY;
     this.ifClose = false;
+    this.direction = Direction.down;
     this.moving = true;
     this.idle = false;
     this.prev = this.direction;
@@ -31,13 +32,13 @@ export class NPC extends Living {
     let playerY = camera.Y + this.canvasHeight / 2;
 
     if (this.idle) {
-      if (this.idleFrameCount % 100 <= 10 && this.prev !== this.direction) {
-        this.frame = 0;
+      this.frame = 0;
+      if (this.idleFrameCount === 0) {
         this.direction = Math.floor(Math.random() * 4);
-        this.prev = this.direction;
       }
       this.idleFrameCount++;
     } else {
+      this.idleFrameCount = 0;
       if (this.moving && this.gameframe % Math.floor(12 / this.movementSpeed) === 0) {
         if (this.frame < 3) this.frame++;
         else this.frame = 0;
@@ -99,6 +100,7 @@ export class NPC extends Living {
     }
 
     if (this.idle) return;
+
     if (this.moving) {
       switch (this.direction) {
         case Direction.up:

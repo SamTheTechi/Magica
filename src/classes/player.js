@@ -9,8 +9,8 @@ import { Music } from "../declare";
 export class Player extends Living {
   constructor(image, positionX, positionY) {
     super(positionX, positionY);
-    this.positionX = 1000;
-    this.positionY = 800;
+    this.positionX = 150;
+    this.positionY = 750;
     this.resistance = 0;
     this.width = 16;
     this.height = 16;
@@ -111,7 +111,7 @@ export class Player extends Living {
     const drawY = this.canvasHeight / 2;
     if (this.inventry.length > 0)
       this.equipedWeapon.draw(this.positionX, this.positionY, this.direction);
-
+    console.log(this.positionX, this.positionY);
     ctx.drawImage(
       this.shadowImage,
       0,

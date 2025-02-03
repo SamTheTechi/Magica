@@ -10,10 +10,12 @@ import { EventMaping, eventEmmiter } from './util/eventBinding';
 export const Music = new AudioManager();
 Music.preloadAudio(AudioMetaData)
 
-eventEmmiter.on(EventMaping.SELECT_CHAR, (_, val) => {
-  const Hero = new Player(`./Actor/Characters/${val}/SpriteSheet.png`);
+//eventEmmiter.on(EventMaping.SELECT_CHAR, (_, val) => {
+setTimeout(() => {
+  const Hero = new Player(`./Actor/Characters/${"Princess"}/SpriteSheet.png`);
   eventEmmiter.emit(EventMaping.GAME_START, (Hero));
   PushGameObjectArray(Hero)
-})
+}, 10)
+//})
 export const Camera = new View();
 export const Map = new Game(MapMetaData);

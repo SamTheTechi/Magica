@@ -5,41 +5,37 @@ export const EnemySpawnList = {
   ],
   dustVale: [
   ],
+  duskWatch: [
+    new Position('snake', 700, 1400, 1),
+    new Position('racoon', 2170, 1220),
+    new Position('bamboo', 1400, 1400),
+    new Position('mouse', 1880, 230, 1),
+  ],
   elderWood: [
-    new Position('racoon', 2350, 420),
-    //new Position('snake', 2060, 1500, 1),
-    new Position('mouse', 460, 1200)
+    new Position('snake', 2060, 1500),
+    new Position('mouse', 460, 1200, 1)
   ],
   emeraldRift: [
   ],
   frostSpireLake: [],
-  ichigoRaman: [
-    new Position('mouse', 200, 200)
-  ],
   ravenFort: [
-    new Position('snake', 240, 390, 1),
-    new Position('lizard', 300, 1400, 1),
-    new Position('mouse', 850, 1240),
+    new Position('snake', 260, 340, 1),
     new Position('mouse', 2200, 760),
-    new Position('racoon', 1800, 1730)
+    new Position('bamboo', 1080, 1630),
   ],
   silentVeilNecropolis: [
   ],
   silentVeilTunnel: [
   ],
   woodPass: [
-    new Position('bamboo', 932, 760),
-    new Position('mushroom', 750, 950),
-    new Position('lizard', 600, 800),
-    new Position('lizard', 560, 1450, 1),
-    new Position('snake', 820, 1770),
-    new Position('bamboo', 1300, 1460),
-    new Position('racoon', 1660, 1150, 1),
-    new Position('snake', 1290, 230, 1),
-    new Position('mushroom', 1500, 1160),
-    new Position('lizard', 1720, 600, 1),
-    new Position('mushroom', 1900, 400),
-    new Position('bamboo', 2100, 1000, 1),
+    new Position('mushroom', 2100, 960),
+    new Position('mushroom', 850, 850, 1),
+    new Position('bamboo', 850, 450),
+    new Position('bamboo', 1880, 400, 1),
+    new Position('racoon', 500, 1350),
+    new Position('racoon', 1500, 1150, 1),
+    new Position('snake', 1300, 240),
+    new Position('snake', 800, 1800, 1),
   ],
   igloo: [
 

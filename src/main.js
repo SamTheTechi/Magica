@@ -24,8 +24,7 @@ const animation = (currentTime, Hero) => {
 };
 
 const draw = (val) => {
-  //if (detectDevice()) touchPads();
-  touchPads()
+  if (detectDevice()) touchPads();
   EventListener(val);
   animation(0, val);
   keybindings();

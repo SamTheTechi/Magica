@@ -7,6 +7,15 @@ export const AnimalsSpawnList = {
     new Position('pig', 1870, 515),
     new Position('frog', 1100, 1300),
   ],
+  duskWatch: [
+    new Position('cow', 1220, 280),
+    new Position('blackChicken', 1420, 480),
+    new Position('pig', 2110, 310),
+    new Position('brownChicken', 1710, 1100),
+    new Position('horse', 700, 1232),
+    new Position('dog', 670, 700),
+    new Position('whiteChicken', 280, 430),
+  ],
   elderWood: [
     new Position('dog', 500, 490),
     new Position('whiteChicken', 1280, 200),
@@ -33,7 +42,6 @@ export const AnimalsSpawnList = {
     new Position('frog', 210, 1230),
     new Position('frog', 730, 1640),
     new Position('cow', 1100, 1400),
-    new Position('cow', 1400, 1500),
     new Position('blackChicken', 1500, 1180),
     new Position('whiteChicken', 2050, 280),
     new Position('dog', 770, 560),
@@ -47,7 +55,7 @@ export const AnimalsSpawnList = {
   silentVeilTunnel: [
   ],
   woodPass: [
-    new Position('horse', 740, 350),
+    new Position('horse', 710, 360),
     new Position('horse', 340, 1780),
     new Position('pig', 150, 1220),
     new Position('frog', 1800, 1570),

@@ -21,7 +21,6 @@ import { NPC } from "./npc";
 import { AnimationMetaData } from "../meta/animation";
 import { Animation } from "./animation";
 import { Music } from "../declare";
-import { eventEmmiter, EventMaping } from "../util/eventBinding";
 
 export class Game {
   constructor(MetaData) {
@@ -44,7 +43,7 @@ export class Game {
       this.nodes[Name] = new Node(Name, DataArray, Weather, Image, neighbours, audio)
     }
     this.value = true;
-    this.currentNode = this.nodes['home'];
+    this.currentNode = this.nodes['ravenFort'];
     this.generateMap()
     this.generateAdjecentList();
   }

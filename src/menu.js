@@ -35,7 +35,6 @@ chars.forEach(char => {
 })
 
 const time = setInterval(() => {
-  console.log(Map.Loading())
   if (Map.Loading()) {
     loading.style.display = 'none';
     clearInterval(time);
