@@ -4,7 +4,7 @@ import { detectDevice } from "../util/detectDevice";
 const canvas = document.querySelector('#canvas');
 export const container = document.getElementById('continer');
 export const ctx = canvas.getContext('2d')
-const adjecement = detectDevice() ? 1.4 : 1.7;
+const adjecement = detectDevice() ? 1.5 : 1.9;
 const scalingFactor = window.devicePixelRatio / adjecement || adjecement;
 let newHeight, newWidth;
 

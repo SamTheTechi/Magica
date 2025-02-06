@@ -49,7 +49,7 @@ export const AudioMetaData = [
       `/Sound/Additional/Voice3.wav`,
       `/Sound/Additional/Voice4.wav`,
     ],
-    volume: 0.4,
+    volume: 0.5,
     loop: false,
   },
 ]

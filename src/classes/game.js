@@ -9,6 +9,7 @@ import { Node } from "./base/node";
 import { Items } from "./item";
 import { Collision } from "./base/collision";
 import { Enemy } from './enemy'
+import { Boss } from "./boss";
 import { Animals } from "./animal";
 import { EnemyMetaData } from "../meta/enemy";
 import { AnimalMetaData } from "../meta/animal"
@@ -93,7 +94,7 @@ export class Game {
       this.currentNode = this.nodes[name];
       this.generateMap();
       this.generateAdjecentList();
-      player.movementSpeed = 6;
+      player.movementSpeed = 5.5;
     }, 700)
   }
 
@@ -126,8 +127,13 @@ export class Game {
       });
     if (EnemySpawnList[this.currentNode.name] !== undefined)
       EnemySpawnList[this.currentNode.name].forEach((item, index) => {
-        if (item.direction)
-          PushGameObjectArray(new Enemy(EnemyMetaData[item.name], item.positionX, item.positionY, index))
+        if (item.direction) {
+          if (item.name !== 'boss')
+            PushGameObjectArray(new Enemy(EnemyMetaData[item.name], item.positionX, item.positionY, index))
+          else {
+            PushGameObjectArray(new Boss(EnemyMetaData[item.name], item.positionX, item.positionY, index))
+          }
+        }
       })
     if (AnimalsSpawnList[this.currentNode.name] !== undefined)
       AnimalsSpawnList[this.currentNode.name].forEach((item, index) => {

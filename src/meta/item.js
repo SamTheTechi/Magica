@@ -2,7 +2,7 @@ export const ItemMetaData = {
   spear: {
     name: 'spear',
     kind: 'weapon',
-    Image: Object.assign(new Image(), { src: './Items/Weapons/Spear/Sprite2.png' }),
+    Image: Object.assign(new Image(), { src: './Items/Weapons/Spear/Sprite.png' }),
     height: 28,
     width: 7,
     audio: 'weapon',
@@ -13,7 +13,7 @@ export const ItemMetaData = {
   bow: {
     name: 'bow',
     kind: 'weapon',
-    Image: Object.assign(new Image(), { src: './Items/Weapons/Bow/SpriteS.png' }),
+    Image: Object.assign(new Image(), { src: './Items/Weapons/Bow/icon.png' }),
     image: '',
     height: 16,
     width: 8,
@@ -25,7 +25,7 @@ export const ItemMetaData = {
   sword: {
     name: 'sword',
     kind: 'weapon',
-    Image: Object.assign(new Image(), { src: './Items/Weapons/Sword/Sprite2.png' }),
+    Image: Object.assign(new Image(), { src: './Items/Weapons/Sword/Sprite.png' }),
     image: '',
     height: 20,
     width: 6,
@@ -37,7 +37,7 @@ export const ItemMetaData = {
   axe: {
     name: 'axe',
     kind: 'weapon',
-    Image: Object.assign(new Image(), { src: './Items/Weapons/Axe/Sprite2.png' }),
+    Image: Object.assign(new Image(), { src: './Items/Weapons/Axe/Sprite.png' }),
     image: '',
     height: 21,
     width: 11,

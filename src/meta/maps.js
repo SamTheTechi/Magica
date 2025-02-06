@@ -56,7 +56,7 @@ export const MapMetaData = {
     Image: Object.assign(new Image(), { src: './Map/duskWatch.png' }),
     Weather: 'leaf',
     neighbours: [new Position('elderWood', 850, 1600, Direction.up), new Position('woodPass', 350, 100, Direction.down)],
-    audio: 'ruins',
+    audio: 'adventure',
   },
   endLand: {
     Name: 'endLand',

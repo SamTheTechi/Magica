@@ -2,6 +2,7 @@ import { container, canvasWidthS, canvasHeightS } from "../store/canvas";
 import { detectDevice } from "../util/detectDevice";
 import { eventEmmiter } from "../util/eventBinding";
 import { EventMaping } from "../util/eventBinding";
+import { Music } from "../declare";
 
 
 const letterMessage = document.createElement('div');
@@ -13,6 +14,7 @@ Object.assign(letterMessage.style, {
 });
 letterMessage.className = `letterMessage`;
 letterContainer.className = `letterContainer`;
+letterContainer.innerHTML = ``
 letterCloseBtn.className = `letterCloseBtn`;
 letterMessage.appendChild(letterContainer);
 letterMessage.appendChild(letterCloseBtn)
@@ -25,6 +27,7 @@ export let canClose = false;
 
 export const letter = (message) => {
   canClose = false;
+  Music.playAudio('menu')
   const showable = message.split('');
   let final = "";
   letterMessage.style.top = '48%';
@@ -58,10 +61,13 @@ export const forceCloseLetter = () => {
 
 export const closeLetter = () => {
   if (canClose) {
+    Music.playAudio('menu')
     letterContainer.innerHTML = '';
     letterCloseBtn.innerHTML = '';
     letterMessage.style.top = '200%';
     canClose = false;
   }
 }
-
+eventEmmiter.on(EventMaping.GAME_START, () => {
+  //letter(`The Flame Deamon has Taken over the world. Break its fiery grip, or burn with the world!....`);
+})

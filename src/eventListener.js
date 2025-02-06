@@ -75,7 +75,8 @@ export const EventListener = (Hero) => {
       Hero.usePotion();
   })
   eventEmmiter.on(EventMaping.ENEMY_DEAD, (_, val) => {
-    Map.updateAdjacentList(EnemySpawnList, Map.currentNode.name, val);
+    Map.updateScore(val[1])
+    Map.updateAdjacentList(EnemySpawnList, Map.currentNode.name, val[0]);
   })
   eventEmmiter.on(EventMaping.ANIMATION, (_, data) => {
     Map.addAnimation(data);

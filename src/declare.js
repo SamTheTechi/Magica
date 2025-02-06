@@ -11,7 +11,7 @@ export const Music = new AudioManager();
 Music.preloadAudio(AudioMetaData)
 
 eventEmmiter.on(EventMaping.SELECT_CHAR, (_, val) => {
-  const Hero = new Player(`./Actor/Characters/${val}/SpriteSheet.png`);
+  const Hero = new Player(val);
   eventEmmiter.emit(EventMaping.GAME_START, (Hero));
   PushGameObjectArray(Hero)
 });

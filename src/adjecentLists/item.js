@@ -14,7 +14,7 @@ export const ItemSpawnList = {
     new Position('potion', 1740, 880)
   ],
   elderWood: [
-    new Position('letter', 500, 490, 1),
+    new Position('letter', 1540, 450, 1),
     new Position('coin', 1401, 645),
     new Position('coin', 480, 1150),
     new Position('coin', 1335, 1040),
@@ -27,16 +27,24 @@ export const ItemSpawnList = {
     new Position('coin', 400, 360),
     new Position('fish', 1130, 380)
   ],
-  frostSpireLake: [],
+  frostSpireLake: [
+    new Position('coin', 680, 800),
+    new Position('coin', 1530, 1470),
+    new Position('coin', 1650, 300),
+    new Position('potion', 1825, 760)
+  ],
   hammerFlame: [
     new Position('spear', 280, 250),
-    new Position('axe', 685, 280)
   ],
   home: [
     new Position('yakitori', 1230, 1010, 1),
-    new Position('sword', 1260, 560, 1),
-    new Position('shuriken', 1060, 560, 1),
-    new Position('letter', 1000, 650, 1),
+    new Position('sword', 600, 900, 1),
+    new Position('spear', 700, 900, 1),
+    new Position('bow', 800, 900, 1),
+    new Position('staff', 900, 900, 1),
+    new Position('shuriken', 1000, 900, 1),
+    new Position('axe', 1100, 900, 1),
+    new Position('letter', 830, 750, 1),
   ],
   house: [
     new Position('sushi', 300, 420)
@@ -100,7 +108,7 @@ export const ItemSpawnList = {
     new Position('honey', 1630, 1650),
   ],
   cliffPass: [
-    new Position('seed', 155, 120),
+    new Position('seed', 255, 270),
   ],
   frostcliffRoad: [
     new Position('seed', 1160, 415),

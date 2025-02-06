@@ -28,7 +28,18 @@ export const EnemySpawnList = {
     new Position('axolot', 990, 970),
     new Position('spirit', 360, 600),
   ],
-  frostSpireLake: [],
+  frostSpireLake: [
+    new Position('slime', 700, 200),
+    new Position('larva', 530, 550),
+    new Position('mouse', 1230, 430),
+    new Position('owl', 1060, 800),
+    new Position('owl', 2000, 350),
+    new Position('slime', 830, 1530),
+    new Position('slime', 1350, 1420),
+    new Position('larva', 1840, 1090),
+    new Position('flame', 2040, 840),
+    new Position('flame', 1580, 670),
+  ],
   ravenFort: [
     new Position('snake', 260, 340, 1),
     new Position('mouse', 2200, 760),
@@ -41,18 +52,22 @@ export const EnemySpawnList = {
     new Position('eye', 1000, 780),
     new Position('skull', 1630, 540),
     new Position('spirit', 2030, 920),
+    new Position('spirit', 650, 1140),
     new Position('eye', 1530, 1630),
   ],
   silentVeilTunnel: [
+    new Position('spirit', 490, 250),
   ],
   woodPass: [
     new Position('mushroom', 2100, 960),
     new Position('mushroom', 850, 850, 1),
     new Position('bamboo', 850, 450),
     new Position('bamboo', 1880, 400, 1),
+    new Position('racoon', 1100, 500),
     new Position('racoon', 500, 1350),
     new Position('racoon', 1500, 1150, 1),
     new Position('snake', 1300, 240),
+    new Position('snake', 750, 1200),
     new Position('snake', 800, 1800, 1),
   ],
   chillwindRoad: [
@@ -60,6 +75,7 @@ export const EnemySpawnList = {
     new Position('flame', 320, 1200),
     new Position('owl', 430, 250),
     new Position('larva', 1600, 720, 1),
+    new Position('mouse', 1330, 1070),
   ],
   cliffPass: [
     new Position('beast', 950, 260)
@@ -69,6 +85,10 @@ export const EnemySpawnList = {
     new Position('larva', 2150, 650, 1),
     new Position('owl', 1020, 160),
     new Position('owl', 790, 410),
+    new Position('flame', 950, 700),
   ],
+  endLand: [
+    new Position('boss', 1400, 900)
+  ]
 }
 

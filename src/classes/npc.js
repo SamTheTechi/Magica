@@ -1,6 +1,7 @@
 import { Living } from "./base/living";
 import { ctx } from "../store/canvas";
 import { Direction } from "../constants/direction";
+import { Music } from "../declare";
 
 export class NPC extends Living {
   constructor(MetaData, positionX, positionY, index) {
@@ -10,12 +11,12 @@ export class NPC extends Living {
     this.movementSpeed = MetaData.speed;
     this.image = MetaData.Image;
     this.shadowImage = Object.assign(new Image(), { src: `./Actor/Characters/Shadow.png` });
-    this.dialogImage = Object.assign(new Image(), { src: `./HUD/Dialog/DialogInfo.png` });
+    this.dialogImage = Object.assign(new Image(), { src: `./HUD/DialogInfo.png` });
     this.height = MetaData.height;
     this.width = MetaData.width;
     this.scalingFactor = MetaData.scalingFactor;
     this.maxDistance = MetaData.range;
-    this.proximity = 100;
+    this.proximity = 90;
     this.startX = positionX;
     this.startY = positionY;
     this.ifClose = false;
@@ -61,7 +62,10 @@ export class NPC extends Living {
       this.height * this.scalingFactor
     );
 
-    if (this.ifClose)
+    if (this.ifClose) {
+      if (this.gameframe % 15 === 0) {
+        Music.playAudio('npc')
+      }
       ctx.drawImage(
         this.dialogImage,
         (this.counter % 4) * 20,
@@ -73,7 +77,7 @@ export class NPC extends Living {
         14 * this.scalingFactor,
         9 * this.scalingFactor,
       );
-
+    }
     ctx.drawImage(
       this.image,
       this.direction * this.height,

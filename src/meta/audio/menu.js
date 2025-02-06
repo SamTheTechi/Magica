@@ -4,24 +4,23 @@ export const MenuAudio = [
     audio: [
       '/Sound/menu/Accept.wav'
     ],
-    volume: 0.2,
+    volume: 0.1,
     loop: false,
   },
   {
     name: 'menu',
     audio: [
       '/Sound/menu/Menu1.wav',
-      '/Sound/menu/Menu2.wav'
     ],
-    volume: 0.2,
+    volume: 0.5,
     loop: false,
   },
   {
-    name: 'accept',
+    name: 'gameover',
     audio: [
       '/Sound/menu/GameOver.wav'
     ],
-    volume: 0.2,
+    volume: 0.5,
     loop: false,
   },
 ]

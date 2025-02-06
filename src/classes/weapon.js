@@ -9,6 +9,7 @@ export class Weapon extends Base {
   constructor(MetaData, Parent) {
     super(0, 0);
     this.image = MetaData.Image;
+    this.icon = MetaData.icon;
     this.swinging = false;
     this.swingOffsetX = 0;
     this.swingOffsetY = 0;

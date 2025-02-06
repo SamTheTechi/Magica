@@ -7,7 +7,7 @@ import { Direction } from "../constants/direction";
 import { Music } from "../declare";
 
 export class Player extends Living {
-  constructor(image, positionX, positionY) {
+  constructor(chartype, positionX, positionY) {
     super(positionX, positionY);
     this.positionX = 1000;
     this.positionY = 750;
@@ -16,7 +16,7 @@ export class Player extends Living {
     this.height = 16;
     this.equipedWeapon = null;
     this.inventry = [];
-    this.movementSpeed = 6;
+    this.movementSpeed = 5.5;
     this.moving = false;
     this.hp = 12;
     this.potion = 1;
@@ -28,11 +28,14 @@ export class Player extends Living {
     };
     this.hpImage = Object.assign(new Image(), { src: `./HUD/Heart.png` })
     this.shadowImage = Object.assign(new Image(), { src: `./Actor/Characters/Shadow.png` });
-    this.image = Object.assign(new Image(), { src: `${image}` });
+    this.image = Object.assign(new Image(), { src: `./Actor/Characters/${chartype}/SpriteSheet.png` });
+    this.faceSet = Object.assign(new Image(), { src: `./Actor/Characters/${chartype}/Faceset.png` });
+    this.faceFrame = Object.assign(new Image(), { src: './HUD/FacesetBox.png' })
     this.potionImage = Object.assign(new Image(), { src: `./Items/Potion/LifePot.png` })
     this.type = 'player';
     this.idleCounter = 0;
     this.idle = true;
+    this.buffer = 3;
   }
 
   addWeapon(weapon) {
@@ -58,12 +61,14 @@ export class Player extends Living {
 
   attack() {
     if (this.equipedWeapon && this.equipedWeapon.canfire) {
+      this.idleCounter = 0;
       this.equipedWeapon.attack();
       Music.playAudio(this.equipedWeapon.audio)
     }
   }
 
   damageTaken(dmg, ani, x, y) {
+    this.idleCounter = 0
     if (this.resistance === 0) {
       this.resistance = 45;
       eventEmmiter.emit(EventMaping.ANIMATION, [ani, x, y]);
@@ -111,27 +116,26 @@ export class Player extends Living {
   draw() {
     if (this.resistance) this.resistance -= 1;
 
+    console.log(this.positionX, this.positionY)
+
     const drawX = this.canvasWidth / 2;
     const drawY = this.canvasHeight / 2;
 
     if (this.inventry.length > 0)
       this.equipedWeapon.draw(this.positionX, this.positionY, this.direction);
 
-    console.log(this.positionX, this.positionY);
-
-    if (this.idleCounter >= 350) {
+    if (!this.moving && this.idleCounter >= 330) {
       this.frame = 6;
       if (this.idle) {
         Music.playAudio('idle')
       }
       this.idle = false;
-      this.direction = 2;
-      const time = setTimeout(() => {
+      this.direction = Direction.left;
+      if (this.idleCounter >= 400) {
         this.idle = true;
         this.direction = Direction.down;
         this.idleCounter = 0;
-        clearTimeout(time);
-      }, 2000)
+      }
     }
 
     ctx.drawImage(
@@ -157,11 +161,24 @@ export class Player extends Living {
       this.width * MagnificationFactor,
       this.height * MagnificationFactor
     )
-    this.drawPotion()
-    this.drawHp()
+    this.drawPotion();
+    this.drawHp();
+    this.drawLogoWeapon();
 
     this.idleCounter++;
+
+    if (!this.moving) {
+      this.movementRestriction = {
+        up: true,
+        down: true,
+        left: true,
+        right: true,
+      };
+    }
+
     if (this.moving) {
+      this.idle = true;
+      this.idleCounter = 0;
       switch (this.direction) {
         case Direction.down:
           if (this.movementRestriction.down) {
@@ -169,7 +186,6 @@ export class Player extends Living {
             this.movementRestriction.right = true;
             this.movementRestriction.left = true;
             this.movementRestriction.up = true;
-            this.idleCounter = 0;
           }
           break;
         case Direction.up:
@@ -178,7 +194,6 @@ export class Player extends Living {
             this.movementRestriction.right = true;
             this.movementRestriction.left = true;
             this.movementRestriction.down = true;
-            this.idleCounter = 0;
           }
           break;
         case Direction.left:
@@ -187,7 +202,6 @@ export class Player extends Living {
             this.movementRestriction.right = true;
             this.movementRestriction.down = true;
             this.movementRestriction.up = true;
-            this.idleCounter = 0;
           }
           break;
         case Direction.right:
@@ -196,7 +210,6 @@ export class Player extends Living {
             this.movementRestriction.down = true;
             this.movementRestriction.left = true;
             this.movementRestriction.up = true;
-            this.idleCounter = 0;
           } break;
         default:
       }
@@ -216,6 +229,8 @@ export class Player extends Living {
     }
     this.gameframe++;
   }
+
+
 
   drawHp() {
     ctx.drawImage(
@@ -269,6 +284,55 @@ export class Player extends Living {
     }
   }
 
+  drawLogoWeapon() {
+    ctx.drawImage(
+      this.faceFrame,
+      0,
+      0,
+      this.width * 4,
+      this.height * 4,
+      this.canvasWidth - (this.width * 8),
+      this.height,
+      this.width * 8,
+      this.height * 8,
+    )
+    ctx.drawImage(
+      this.faceSet,
+      0,
+      0,
+      this.width * 4,
+      this.height * 4,
+      this.canvasWidth - (this.width * 7.5),
+      this.height * 1.5,
+      this.width * 8,
+      this.height * 8,
+    )
+    ctx.drawImage(
+      this.faceFrame,
+      0,
+      0,
+      this.width * 4,
+      this.height * 4,
+      this.canvasWidth - (this.width * 12.5),
+      this.height * 1,
+      this.width * 6,
+      this.height * 6,
+    )
+    if (this.equipedWeapon != null) {
+      ctx.drawImage(
+        this.equipedWeapon.icon,
+        0,
+        0,
+        this.width * 4,
+        this.height * 4,
+        this.canvasWidth - (this.width * 11.5),
+        this.height * 1.5,
+        this.width * 11,
+        this.height * 11,
+      )
+    }
+  }
+
   updatePlayerLocaion(positionX, positionY, direction) {
     this.positionX = positionX;
     this.positionY = positionY;
@@ -290,17 +354,21 @@ export class Player extends Living {
 
   restrictMovement(direction) {
     switch (direction) {
-      case Direction.up:
-        this.movementRestriction.up = false;
-        break;
-      case Direction.down:
-        this.movementRestriction.down = false;
-        break;
       case Direction.left:
         this.movementRestriction.left = false;
+        this.positionX += this.buffer;
         break;
       case Direction.right:
         this.movementRestriction.right = false;
+        this.positionX -= this.buffer;
+        break;
+      case Direction.up:
+        this.movementRestriction.up = false;
+        this.positionY += this.buffer;
+        break;
+      case Direction.down:
+        this.movementRestriction.down = false;
+        this.positionY -= this.buffer;
         break;
     }
   }

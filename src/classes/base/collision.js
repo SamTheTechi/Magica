@@ -11,21 +11,29 @@ export class Collision {
   }
 
   draw(camera) {
-    if (this.type === 'collision') {
-      //     ctx.fillStyle = `rgba(255,0,0,0.1)`;
-    } else {
-      //    ctx.fillStyle = `rgba(0,255,255,0.1)`;
-    }
-    // ctx.fillRect(this.positionX - camera.X, this.positionY - camera.Y, 32, 32);
+    // if (this.type === 'collision') {
+    //ctx.fillStyle = `rgba(255,0,0,0.2)`;
+    // } else {
+    //ctx.fillStyle = `rgba(0,255,255,0.2)`;
+    // }
+    //ctx.fillRect(this.positionX - camera.X, this.positionY - camera.Y, 32, 32);
   }
 
   collisionBoundries() {
-    if (this.type === 'collision') this.buffer = 16;
-    return {
-      top: this.positionY + this.buffer,
-      left: this.positionX - this.width + this.buffer,
-      bottom: this.positionY + this.height - this.buffer,
-      right: this.positionX - this.buffer,
-    };
+    if (this.type !== 'collision') {
+      return {
+        top: this.positionY + this.buffer,
+        left: this.positionX - this.width + this.buffer,
+        bottom: this.positionY + this.height - this.buffer,
+        right: this.positionX - this.buffer,
+      };
+    } else {
+      return {
+        top: this.positionY + 6,
+        left: this.positionX - this.width + 6,
+        bottom: this.positionY + this.height - 24,
+        right: this.positionX - 6,
+      };
+    }
   }
 }

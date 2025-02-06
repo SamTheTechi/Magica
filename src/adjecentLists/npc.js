@@ -1,8 +1,6 @@
 import { Position } from "../classes/base/positionHolder"
 
 export const NPCSpawnList = {
-  abandonedHouse: [
-  ],
   dustVale: [
     new Position('master', 420, 1640),
   ],
@@ -26,7 +24,10 @@ export const NPCSpawnList = {
     new Position('oldman1', 1030, 470),
     new Position('villager2', 2140, 770),
   ],
-  frostSpireLake: [],
+  frostSpireLake: [
+    new Position('knight', 320, 1450),
+    new Position('master', 2150, 1450),
+  ],
   hammerFlame: [
     new Position('oldman2', 390, 145),
   ],
@@ -56,19 +57,12 @@ export const NPCSpawnList = {
     new Position('boy', 1900, 1630),
   ],
   silentVeilTunnel: [
-  ],
-  woodPass: [
-  ],
-  igloo: [
-
+    new Position('inspector', 560, 150),
   ],
   chillwindRoad: [
     new Position('knight', 1520, 340),
     new Position('villager1', 900, 1310),
     new Position('monk', 600, 700),
-  ],
-  cliffPass: [
-
   ],
   frostcliffRoad: [
     new Position('snowbaby', 1210, 1620),

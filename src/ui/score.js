@@ -1,5 +1,6 @@
 import { container } from "../store/canvas";
 import { canvasWidthS, canvasHeightS } from "../store/canvas";
+import { detectDevice } from "../util/detectDevice";
 
 const scoreContainer = document.createElement('div');
 const gameScore = document.createElement('div');
@@ -9,6 +10,7 @@ Object.assign(scoreContainer.style, {
 });
 scoreContainer.className = `scoreContainer`
 gameScore.className = `gameScore`;
+gameScore.style.marginTop = detectDevice() ? '3%' : '5%';
 scoreContainer.appendChild(gameScore)
 container.appendChild(scoreContainer);
 

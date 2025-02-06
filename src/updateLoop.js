@@ -16,7 +16,6 @@ export const UpdateGameLoop = (camera) => {
   let Npc = ReadGameObjectArray().filter((obj) => obj.type === 'npc');
   let Projectile = ReadGameObjectArray().filter((obj) => obj.type === 'projectile');
   let Animation = ReadGameObjectArray().filter((obj) => obj.type === 'animation')
-
   Map.draw(camera)
 
   Animals.forEach((animal) => {
@@ -38,14 +37,12 @@ export const UpdateGameLoop = (camera) => {
       }
     })
     LocationBoundries.forEach((boundry) => {
-      boundry.draw(camera)
       if (collision(boundry.collisionBoundries(), proj.collisionBoundries())) {
         proj.dead = true;
       }
     })
 
     CollisionBoundries.forEach((boundry) => {
-      boundry.draw(camera)
       if (collision(boundry.collisionBoundries(), proj.collisionBoundries())) {
         proj.dead = true;
       }

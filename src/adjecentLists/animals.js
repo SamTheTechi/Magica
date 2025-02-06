@@ -34,7 +34,12 @@ export const AnimalsSpawnList = {
     new Position('pig', 260, 860),
     new Position('horse', 250, 1440)
   ],
-  frostSpireLake: [],
+  frostSpireLake: [
+    new Position('horsem', 230, 720),
+    new Position('horsem', 1350, 1720),
+    new Position('whiteLion', 2100, 90),
+    new Position('blackChicken', 1200, 970),
+  ],
   home: [
     new Position('dog', 1030, 630)
   ],
