@@ -49,14 +49,6 @@ export const UpdateGameLoop = (camera) => {
     })
   })
   Player.forEach((plr) => {
-    plr.draw(camera);
-
-    Npc.forEach((npc) => {
-      npc.draw(camera);
-      if (collision(plr.collisionBoundries(), npc.collisionBoundries())) {
-        eventEmmiter.emit(EventMaping.COLLISION_BOUNDARY, collisionDirection(plr.collisionBoundries(), npc.collisionBoundries()))
-      }
-    })
     Enemy.forEach((eny) => {
       eny.draw(camera)
 
@@ -67,6 +59,13 @@ export const UpdateGameLoop = (camera) => {
 
       if (collision(plr.collisionBoundries(), eny.collisionBoundries(), -10)) {
         plr.damageTaken(eny.damage, eny.ani, plr.positionX, plr.positionY);
+      }
+    })
+    plr.draw(camera);
+    Npc.forEach((npc) => {
+      npc.draw(camera);
+      if (collision(plr.collisionBoundries(), npc.collisionBoundries())) {
+        eventEmmiter.emit(EventMaping.COLLISION_BOUNDARY, collisionDirection(plr.collisionBoundries(), npc.collisionBoundries()))
       }
     })
     LocationBoundries.forEach((boundry) => {

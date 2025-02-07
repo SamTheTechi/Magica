@@ -1,4 +1,4 @@
-import { AnimalsSpawnList, EnemySpawnList, ItemSpawnList, NPCSpawnList } from "../adjecentLists";
+import { AnimalsSpawnList, AnimationSpawnList, EnemySpawnList, ItemSpawnList, NPCSpawnList } from "../adjecentLists";
 import { ctx, canvasWidth, canvasHeight } from "../store/canvas";
 import { letter, canClose, closeLetter, forceCloseLetter } from "../ui/letterMsg";
 import { PushGameObjectArray, OverWrightGameObjectArray, ReadGameObjectArray } from "../store/gameObject";
@@ -120,6 +120,10 @@ export class Game {
   }
 
   generateAdjecentList() {
+    if (AnimationSpawnList[this.currentNode.name] !== undefined)
+      AnimationSpawnList[this.currentNode.name].forEach((item) => {
+        PushGameObjectArray(new Animation(AnimationMetaData[item.name], item.positionX, item.positionY))
+      });
     if (ItemSpawnList[this.currentNode.name] !== undefined)
       ItemSpawnList[this.currentNode.name].forEach((item, index) => {
         if (item.direction)

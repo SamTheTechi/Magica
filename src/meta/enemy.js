@@ -38,7 +38,7 @@ export const EnemyMetaData = {
     Hp: 60,
     Attack: 1,
     Score: 5,
-    ani: 'claw',
+    ani: 'plant',
   },
   mushroom: {
     name: `mushroom`,
@@ -48,7 +48,7 @@ export const EnemyMetaData = {
     Hp: 40,
     Attack: 2,
     Score: 5,
-    ani: 'claw',
+    ani: 'plant',
   },
   axolot: {
     name: `axolot`,
@@ -68,7 +68,7 @@ export const EnemyMetaData = {
     Hp: 60,
     Attack: 1,
     Score: 3,
-    ani: 'claw',
+    ani: 'cut',
   },
   spirit: {
     name: `spirit`,
@@ -78,7 +78,7 @@ export const EnemyMetaData = {
     Hp: 60,
     Attack: 1,
     Score: 3,
-    ani: 'claw',
+    ani: 'claws',
   },
   skull: {
     name: `skull`,
@@ -88,7 +88,7 @@ export const EnemyMetaData = {
     Hp: 80,
     Attack: 2,
     Score: 5,
-    ani: 'claw',
+    ani: 'flame',
   },
 
   //snow
@@ -110,7 +110,7 @@ export const EnemyMetaData = {
     Hp: 90,
     Attack: 1,
     Score: 3,
-    ani: 'claw',
+    ani: 'ice',
   },
   owl: {
     name: `owl`,
@@ -120,7 +120,7 @@ export const EnemyMetaData = {
     Hp: 180,
     Attack: 1,
     Score: 5,
-    ani: 'claw',
+    ani: 'slash',
   },
   flame: {
     name: `flame`,
@@ -130,7 +130,7 @@ export const EnemyMetaData = {
     Hp: 120,
     Attack: 2,
     Score: 5,
-    ani: 'claw',
+    ani: 'ice',
   },
 
   beast: {
@@ -141,7 +141,7 @@ export const EnemyMetaData = {
     Hp: 200,
     Attack: 2,
     Score: 20,
-    ani: 'claw',
+    ani: 'rock',
   },
   skeleton: {
     name: `skeleton`,
@@ -151,7 +151,7 @@ export const EnemyMetaData = {
     Hp: 120,
     Attack: 2,
     Score: 20,
-    ani: 'claw',
+    ani: 'claws',
   },
   boss: {
     name: `boss`,
@@ -159,7 +159,7 @@ export const EnemyMetaData = {
     Speed: 2,
     Range: 550,
     Hp: 500,
-    Attack: 2,
+    Attack: 0,
     Score: 100,
     ani: 'claw',
   },

@@ -2,6 +2,7 @@ import { Position } from "../classes/base/positionHolder"
 
 export const EnemySpawnList = {
   abandonedHouse: [
+    new Position('spirit', 490, 250),
   ],
   dustVale: [
     new Position('spirit', 1730, 140),
@@ -14,7 +15,7 @@ export const EnemySpawnList = {
   duskWatch: [
     new Position('snake', 700, 1400, 1),
     new Position('racoon', 2170, 1220),
-    new Position('bamboo', 1400, 1400),
+    new Position('bamboo', 1400, 1420),
     new Position('mouse', 1880, 230, 1),
   ],
   elderWood: [

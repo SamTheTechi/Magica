@@ -5,6 +5,14 @@ export const ItemSpawnList = {
     new Position('coin', 720, 300),
     new Position('beaf', 550, 160)
   ],
+  duskWatch: [
+    new Position('letter', 680, 235),
+    new Position('shuriken', 680, 285),
+    new Position('coin', 1115, 735),
+    new Position('coin', 1690, 610),
+    new Position('coin', 1020, 1230),
+    new Position('onigiri', 1660, 1470),
+  ],
   dustVale: [
     new Position('staff', 310, 1570),
     new Position('coin', 1930, 1770),
@@ -38,12 +46,7 @@ export const ItemSpawnList = {
   ],
   home: [
     new Position('yakitori', 1230, 1010, 1),
-    new Position('sword', 600, 900, 1),
-    new Position('spear', 700, 900, 1),
-    new Position('bow', 800, 900, 1),
-    new Position('staff', 900, 900, 1),
-    new Position('shuriken', 1000, 900, 1),
-    new Position('axe', 1100, 900, 1),
+    new Position('sword', 650, 950),
     new Position('letter', 830, 750, 1),
   ],
   house: [
@@ -99,6 +102,7 @@ export const ItemSpawnList = {
   ],
   igloo: [
     new Position('honey', 140, 240, 1),
+    new Position('axe', 360, 385),
     new Position('seed', 390, 180)
   ],
   chillwindRoad: [

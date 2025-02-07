@@ -29,7 +29,7 @@ export const WeaponMetaData = {
       frames: 2,
       duration: 1,
       speed: 13,
-      decrementRate: 0.12,
+      decrementRate: 0.1175,
       name: `arrow`,
     }
   },
@@ -86,7 +86,7 @@ export const WeaponMetaData = {
       frames: 4,
       duration: 4,
       speed: 11.5,
-      decrementRate: 0.055,
+      decrementRate: 0.056,
       name: `fireBall`,
     }
   },

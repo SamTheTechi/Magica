@@ -16,7 +16,7 @@ export const ItemMetaData = {
     Image: Object.assign(new Image(), { src: './Items/Weapons/Bow/icon.png' }),
     image: '',
     height: 16,
-    width: 8,
+    width: 12,
     audio: 'weapon',
     scalingFactor: 4,
     frame: 1,

@@ -1,3 +1,4 @@
+import { ctx } from "../../store/canvas";
 
 export class Collision {
   constructor(positionX, positionY, size, type, location) {
@@ -11,11 +12,11 @@ export class Collision {
   }
 
   draw(camera) {
-    // if (this.type === 'collision') {
-    //ctx.fillStyle = `rgba(255,0,0,0.2)`;
-    // } else {
-    //ctx.fillStyle = `rgba(0,255,255,0.2)`;
-    // }
+    if (this.type === 'collision') {
+      //ctx.fillStyle = `rgba(255,0,0,0.2)`;
+    } else {
+      //ctx.fillStyle = `rgba(0,255,255,0.2)`;
+    }
     //ctx.fillRect(this.positionX - camera.X, this.positionY - camera.Y, 32, 32);
   }
 

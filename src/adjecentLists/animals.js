@@ -14,7 +14,7 @@ export const AnimalsSpawnList = {
     new Position('brownChicken', 1710, 1100),
     new Position('horse', 700, 1232),
     new Position('dog', 670, 700),
-    new Position('whiteChicken', 280, 430),
+    new Position('whiteChicken', 310, 430),
   ],
   elderWood: [
     new Position('dog', 500, 490),
