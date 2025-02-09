@@ -86,8 +86,17 @@ export const AnimationMetaData = {
     width: 32,
     height: 32,
     Image: Object.assign(new Image(), { src: './FX/Elemental/Ice/SpriteSheet.png' }),
-    animationSpeed: 7,
+    animationSpeed: 5,
     scalingFactor: 2,
+  },
+  bigice: {
+    name: `bigice`,
+    frame: 10,
+    width: 32,
+    height: 32,
+    Image: Object.assign(new Image(), { src: './FX/Elemental/Ice/SpriteSheetB.png' }),
+    animationSpeed: 4,
+    scalingFactor: 2.5,
   },
   fire: {
     name: `fire`,

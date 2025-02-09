@@ -102,12 +102,12 @@ body {
 }
 
 .padStyle {
-  background-color: rgba(245, 222, 179, 0.1);
-  border: 2.5px rgba(245, 222, 179, 0.8) solid;
+  background-color: rgba(245, 222, 179, 0.15);
+  border: 3px rgba(245, 222, 179, 0.8) solid;
 }
 
 .padStyle:active {
-  background-color: rgba(245, 222, 179, 0.3);
+  background-color: rgba(245, 222, 179, 0.4);
 }
 
 .arrowContiner {
@@ -119,11 +119,11 @@ body {
     ". up ."
     "left . right"
     ". down .";
-  height: 150px;
-  width: 150px;
+  height: 160px;
+  width: 160px;
   position: absolute;
-  top: calc(100% - 165px);
-  left: 15px;
+  top: calc(100% - 170px);
+  left: 20px;
 }
 
 .actionContiner {
@@ -135,10 +135,10 @@ body {
     ". . switch"
     "attack attack potion"
     "attack attack .";
-  height: 150px;
-  width: 150px;
+  height: 160px;
+  width: 160px;
   position: absolute;
-  top: calc(100% - 160px);
+  top: calc(100% - 165px);
   right: 15px;
 }
 

@@ -116,22 +116,20 @@ export class Player extends Living {
   draw() {
     if (this.resistance) this.resistance -= 1;
 
-    console.log(this.positionX, this.positionY)
-
     const drawX = this.canvasWidth / 2;
     const drawY = this.canvasHeight / 2;
 
     if (this.inventry.length > 0)
       this.equipedWeapon.draw(this.positionX, this.positionY, this.direction);
 
-    if (!this.moving && this.idleCounter >= 330) {
+    if (!this.moving && this.idleCounter >= 230) {
       this.frame = 6;
       if (this.idle) {
         Music.playAudio('idle')
       }
       this.idle = false;
       this.direction = Direction.left;
-      if (this.idleCounter >= 400) {
+      if (this.idleCounter >= 300) {
         this.idle = true;
         this.direction = Direction.down;
         this.idleCounter = 0;

@@ -170,6 +170,13 @@ export class Enemy extends Living {
     if (this.resistance === 0) {
       this.resistance = 40;
       this.hp -= dmg;
+      this.showBar = true;
+      if (!this.hideBarTimeout) {
+        this.hideBarTimeout = setTimeout(() => {
+          this.hideBarTimeout = null;
+          this.showBar = false;
+        }, 1000)
+      }
       if (this.hp <= 0) {
         eventEmmiter.emit(EventMaping.ENEMY_DEAD, [this.index, this.score]);
         eventEmmiter.emit(EventMaping.ANIMATION, ['spirit', x, y]);

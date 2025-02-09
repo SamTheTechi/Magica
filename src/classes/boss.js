@@ -17,7 +17,7 @@ export class Boss extends Living {
     this.name = MetaData.name;
     this.movementSpeed = MetaData.Speed;
     this.proximity = MetaData.Range;
-    this.damage = 0;
+    this.damage = MetaData.Attack;
     this.hp = MetaData.Hp;
     this.ani = MetaData.ani;
     this.maxHp = MetaData.Hp;
@@ -35,8 +35,8 @@ export class Boss extends Living {
   }
 
   draw(Camera) {
-    let playerX = Camera.X + this.canvasWidth / 2;
-    let playerY = Camera.Y + this.canvasHeight / 2;
+    let playerX = Camera.X + this.canvasWidth / 2 - this.height * MagnificationFactor / 2 + this.height / 2;
+    let playerY = Camera.Y + this.canvasHeight / 2 - this.width * MagnificationFactor / 2 + this.width / 2;
     this.movement(playerX, playerY)
 
     ctx.drawImage(
@@ -167,7 +167,7 @@ export class Boss extends Living {
     if (distances.right === max) return Direction.right;
   }
 
-  damageTaken(dmg, ani, x, y) {
+  damageTaken(dmg) {
     if (this.resistance === 0) {
       this.resistance = 40;
       this.hp -= dmg;
@@ -175,14 +175,20 @@ export class Boss extends Living {
       this.hitAni = true;
       if (this.hp <= 0) {
         eventEmmiter.emit(EventMaping.ENEMY_DEAD, [this.index, this.score]);
-        eventEmmiter.emit(EventMaping.ANIMATION, ['spirit', x, y]);
+        eventEmmiter.emit(EventMaping.GAME_WON);
         this.dead = true;
-        Music.playAudio('kill')
+        Music.playAudio('alert')
         return 0;
       }
       Music.playAudio('hit')
-      eventEmmiter.emit(EventMaping.ANIMATION, [ani, x, y]);
     }
   }
-
+  collisionBoundries() {
+    return {
+      top: this.positionY,
+      left: this.positionX - this.width,
+      bottom: this.positionY + (this.height * MagnificationFactor),
+      right: this.positionX + (this.width * MagnificationFactor) * 0.95,
+    };
+  }
 }

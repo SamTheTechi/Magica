@@ -31,19 +31,26 @@ export const UpdateGameLoop = (camera) => {
   Projectile.forEach((proj) => {
     proj.draw(camera);
     Enemy.forEach((eny) => {
-      if (collision(proj.collisionBoundries(), eny.collisionBoundries(), -10)) {
-        eny.damageTaken(proj.damage, proj.ani, eny.positionX, eny.positionY);
-        proj.dead = true;
+      if (eny.name === "boss") {
+        if (collision(proj.collisionBoundries(), eny.collisionBoundries(), -50)) {
+          eny.damageTaken(proj.damage, proj.ani, eny.positionX + eny.width, eny.positionY + eny.height);
+          proj.dead = true;
+        }
+      } else {
+        if (collision(proj.collisionBoundries(), eny.collisionBoundries(), -10)) {
+          eny.damageTaken(proj.damage, proj.ani, eny.positionX, eny.positionY);
+          proj.dead = true;
+        }
       }
     })
     LocationBoundries.forEach((boundry) => {
-      if (collision(boundry.collisionBoundries(), proj.collisionBoundries())) {
+      if (collision(boundry.collisionBoundries(), proj.collisionBoundries(), -10)) {
         proj.dead = true;
       }
     })
 
     CollisionBoundries.forEach((boundry) => {
-      if (collision(boundry.collisionBoundries(), proj.collisionBoundries())) {
+      if (collision(boundry.collisionBoundries(), proj.collisionBoundries(), -15)) {
         proj.dead = true;
       }
     })
@@ -57,11 +64,10 @@ export const UpdateGameLoop = (camera) => {
           eny.damageTaken(plr.equipedWeapon.damage, plr.equipedWeapon.ani, eny.positionX, eny.positionY);
         }
 
-      if (collision(plr.collisionBoundries(), eny.collisionBoundries(), -10)) {
+      if (collision(plr.collisionBoundries(), eny.collisionBoundries(), eny.name === 'boss' ? -30 : -10)) {
         plr.damageTaken(eny.damage, eny.ani, plr.positionX, plr.positionY);
       }
     })
-    plr.draw(camera);
     Npc.forEach((npc) => {
       npc.draw(camera);
       if (collision(plr.collisionBoundries(), npc.collisionBoundries())) {
@@ -114,6 +120,10 @@ export const UpdateGameLoop = (camera) => {
 
   Animation.forEach((ani) => {
     ani.draw(camera)
+  })
+
+  Player.forEach((plr) => {
+    plr.draw(camera);
   })
 
   OverWrightGameObjectArray(ReadGameObjectArray().filter((obj) => obj.dead !== true))

@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(35px);
   padding: 10% 10% 20% 10%;
   transition: opacity 0.5s, z-index 1s;
 }
@@ -45,7 +45,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  backdrop-filter: blur(15px) grayscale(20%);
+  backdrop-filter: blur(20px) grayscale(20%);
   opacity: 1;
   transition: opacity 0.5s, z-index 1s;
 }
@@ -130,7 +130,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  backdrop-filter: blur(20px) grayscale(30%) brightness(90%);
+  backdrop-filter: blur(25px) grayscale(50%) brightness(70%);
   padding: 10% 10% 20% 10%;
   transition: opacity 1.5s, z-index 0.5s;
   opacity: 0;
@@ -162,4 +162,83 @@
     transform: scale(1.075);
     letter-spacing: 1.5px;
   }
+}
+
+
+.rotateContainer {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  left: 50%;
+  top: 50%;
+  background-color: wheat;
+  z-index: -999;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10% 10% 20% 10%;
+  transition: opacity 1s, z-index 0.2s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rotateContainer.show {
+  z-index: 13;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.rotateText {
+  text-align: center;
+  font-size: 2rem;
+  color: black;
+  animation: rot 0.8s infinite ease-in-out alternate;
+}
+
+@keyframes rot {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    color: #a06531;
+    transform: scale(1.075);
+    letter-spacing: 1.2px;
+  }
+}
+
+.gamewon {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  left: 50%;
+  top: 50%;
+  z-index: -99;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  backdrop-filter: blur(25px) grayscale(50%) brightness(70%);
+  padding: 10% 10% 20% 10%;
+  transition: opacity 1.5s, z-index 0.5s;
+  opacity: 0;
+}
+
+.gamewon.show {
+  z-index: 12;
+  opacity: 1;
+}
+
+.gamewon .tit {
+  font-size: 5rem;
+  animation: main 1s infinite ease-in-out alternate;
+}
+
+.gamewon .gcont {
+  animation: main 1s infinite ease-in-out alternate;
+  text-align: center;
+  font-size: 2rem;
 }
