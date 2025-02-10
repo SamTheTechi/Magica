@@ -14,15 +14,17 @@ export const ItemSpawnList = {
     new Position('onigiri', 1660, 1470),
   ],
   dustVale: [
+    new Position('beaf', 1020, 500),
     new Position('staff', 310, 1570),
     new Position('coin', 1930, 1770),
     new Position('coin', 1060, 300),
     new Position('coin', 1060, 1060),
     new Position('fish', 2130, 1350),
+    new Position('letter', 490, 1620),
     new Position('potion', 1740, 880)
   ],
   elderWood: [
-    new Position('letter', 1540, 450, 1),
+    new Position('letter', 1540, 450),
     new Position('coin', 1401, 645),
     new Position('coin', 480, 1150),
     new Position('coin', 1335, 1040),
@@ -30,18 +32,23 @@ export const ItemSpawnList = {
     new Position('sushi', 1330, 1400)
   ],
   emeraldRift: [
+    new Position('letter', 1150, 620),
     new Position('coin', 1730, 470),
     new Position('coin', 1350, 1560),
     new Position('coin', 400, 360),
     new Position('fish', 1130, 380)
   ],
   frostSpireLake: [
+    new Position('letter', 2090, 1450),
+    new Position('honey', 2100, 1650),
+    new Position('seed', 2220, 1650),
     new Position('coin', 680, 800),
     new Position('coin', 1530, 1470),
     new Position('coin', 1650, 300),
     new Position('potion', 1825, 760)
   ],
   hammerFlame: [
+    new Position('letter', 590, 300),
     new Position('spear', 280, 250),
   ],
   home: [
@@ -63,6 +70,7 @@ export const ItemSpawnList = {
   ],
   ravenFortHall: [
     new Position('sushi', 625, 420),
+    new Position('letter', 480, 230),
   ],
   ravenFortHall2: [
     new Position('potion', 175, 375),
@@ -74,6 +82,7 @@ export const ItemSpawnList = {
     new Position('coin', 240, 220),
   ],
   ravenFort: [
+    new Position('letter', 220, 850),
     new Position('coin', 350, 1580),
     new Position('coin', 2100, 720),
     new Position('coin', 1065, 1020),
@@ -93,6 +102,13 @@ export const ItemSpawnList = {
     new Position('beaf', 1035, 1390),
     new Position('letter', 280, 130, 1),
   ],
+  warehouse: [
+    new Position('letter', 1300, 520),
+    new Position('coin', 1100, 655),
+    new Position('coin', 1650, 610),
+    new Position('coin', 1130, 310),
+    new Position('beaf', 1540, 425),
+  ],
   woodPass: [
     new Position('coin', 810, 990),
     new Position('coin', 830, 960),
@@ -106,6 +122,7 @@ export const ItemSpawnList = {
     new Position('seed', 390, 180)
   ],
   chillwindRoad: [
+    new Position('letter', 1340, 340),
     new Position('coin', 1495, 1220),
     new Position('coin', 1490, 1250),
     new Position('coin', 380, 360),
@@ -115,6 +132,7 @@ export const ItemSpawnList = {
     new Position('seed', 255, 270),
   ],
   frostcliffRoad: [
+    new Position('letter', 1700, 1080),
     new Position('seed', 1160, 415),
     new Position('coin', 750, 245),
     new Position('coin', 2180, 1570),

@@ -118,13 +118,15 @@ export const UpdateGameLoop = (camera) => {
     })
   })
 
+  Player.forEach((plr) => {
+    plr.draw(camera);
+  })
+
+  Map.drawOverlay(camera);
   Animation.forEach((ani) => {
     ani.draw(camera)
   })
 
-  Player.forEach((plr) => {
-    plr.draw(camera);
-  })
 
   OverWrightGameObjectArray(ReadGameObjectArray().filter((obj) => obj.dead !== true))
 }

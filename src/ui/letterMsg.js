@@ -69,5 +69,5 @@ export const closeLetter = () => {
   }
 }
 eventEmmiter.on(EventMaping.GAME_START, () => {
-  //letter(`The Flame Deamon has Taken over the world. Break its fiery grip, or burn with the world!....`);
+  letter(`The Flame Deamon has Taken over the world. Break its fiery grip, or burn with the world!....`);
 })

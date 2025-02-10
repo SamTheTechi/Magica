@@ -20,7 +20,8 @@ import {
   IglooDataArray,
   ChillwindRoadDataArray,
   CliffPassDataArray,
-  FrostcliffRoadDataArray
+  FrostcliffRoadDataArray,
+  WarehouseDataArray
 } from "./mapdata"
 import { Position } from "../classes/base/positionHolder"
 import { Direction } from "../constants/direction"
@@ -57,6 +58,7 @@ export const MapMetaData = {
     Weather: 'leaf',
     neighbours: [new Position('elderWood', 850, 1600, Direction.up), new Position('woodPass', 350, 100, Direction.down)],
     audio: 'adventure',
+    overlay: Object.assign(new Image(), { src: './Map/duskWatch0.png' }),
   },
   endLand: {
     Name: 'endLand',
@@ -89,6 +91,7 @@ export const MapMetaData = {
     Weather: 'none',
     neighbours: [new Position('woodPass', 2350, 1250, Direction.left), new Position('ichiranRaman', 650, 360, Direction.up), new Position('house', 483, 420, Direction.up), new Position('emeraldRift', 340, 1670, Direction.up), new Position('ravenFortHall', 370, 420, Direction.up), new Position('chillwindRoad', 160, 1500, Direction.right), new Position('hammerFlame', 400, 420, Direction.up)],
     audio: 'village',
+    overlay: Object.assign(new Image(), { src: './Map/Ravenfort0.png' }),
   },
   ravenFortHall: {
     Name: 'ravenFortHall',
@@ -111,7 +114,7 @@ export const MapMetaData = {
     DataArray: EmeraldRiftDataArray,
     Image: Object.assign(new Image(), { src: './Map/EmeraldRift.png' }),
     Weather: 'rain',
-    neighbours: [new Position('ravenFort', 2120, 100, Direction.down), new Position('silentVeilNecropolis', 630, 100, Direction.down),],
+    neighbours: [new Position('ravenFort', 2120, 100, Direction.down), new Position('silentVeilNecropolis', 630, 100, Direction.down), new Position('warehouse', 390, 1100, Direction.up)],
     audio: 'peaceful',
   },
   silentVeil: {
@@ -202,4 +205,12 @@ export const MapMetaData = {
     neighbours: [new Position('elderWood', 1660, 715, Direction.down)],
     audio: 'sad',
   },
+  warehouse: {
+    Name: 'warehouse',
+    DataArray: WarehouseDataArray,
+    Image: Object.assign(new Image(), { src: './Map/warehouse.png' }),
+    Weather: 'none',
+    neighbours: [new Position('emeraldRift', 990, 525, Direction.down)],
+    audio: 'cave',
+  }
 }

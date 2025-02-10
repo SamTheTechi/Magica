@@ -40,8 +40,8 @@ export class Game {
 
   loadMapMetaData(metaData) {
     for (const i in metaData) {
-      const { Name, DataArray, Image, neighbours, Weather, audio } = metaData[i];
-      this.nodes[Name] = new Node(Name, DataArray, Weather, Image, neighbours, audio)
+      const { Name, DataArray, Image, neighbours, Weather, audio, overlay } = metaData[i];
+      this.nodes[Name] = new Node(Name, DataArray, Weather, Image, neighbours, audio, overlay)
     }
     this.value = true;
     this.currentNode = this.nodes['home'];
@@ -59,6 +59,14 @@ export class Game {
     ctx.drawImage(this.currentNode.image, drawX, drawY)
     this.generateWeather()
     UpdateScore(this.Score)
+  }
+
+  drawOverlay(Camera) {
+    if (this.currentNode.overlay) {
+      const drawX = this.positionX - Camera.X;
+      const drawY = this.positionY - Camera.Y;
+      ctx.drawImage(this.currentNode.overlay, drawX, drawY)
+    }
   }
 
   generateMap() {

@@ -34,6 +34,9 @@ export const NPCSpawnList = {
   house: [
     new Position('woman', 600, 210),
   ],
+  warehouse: [
+    new Position('oldman1', 1390, 550),
+  ],
   ichiranRaman: [
     new Position('oldman2', 470, 160),
     new Position('villager1', 520, 300),

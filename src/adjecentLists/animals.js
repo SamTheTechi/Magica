@@ -72,8 +72,8 @@ export const AnimalsSpawnList = {
     new Position('horse', 1180, 1580),
   ],
   frostcliffRoad: [
-    new Position('horsem', 2120, 230),
-    new Position('horsem', 1000, 1630),
+    new Position('horsem', 2120, 210),
+    new Position('horsem', 1000, 1650),
     new Position('dog', 1900, 1180),
     new Position('cow', 1390, 830),
   ],

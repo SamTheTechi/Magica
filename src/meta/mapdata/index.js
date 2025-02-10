@@ -1,3 +1,4 @@
+import { WarehouseDataArray } from "./warehouse";
 import { EndLandDataArray } from "./endLand";
 import { DuskWatchDataArray } from "./duskWatch";
 import { HomeDataArray } from "./home";
@@ -20,4 +21,4 @@ import { CliffPassDataArray } from "./cliffPass";
 import { ChillwindRoadDataArray } from "./chillwindRoad";
 import { FrostcliffRoadDataArray } from "./frostcliffRoad";
 
-export { IglooDataArray, EndLandDataArray, DuskWatchDataArray, CliffPassDataArray, ChillwindRoadDataArray, FrostcliffRoadDataArray, HomeDataArray, HouseDataArray, IchiranRamamDataArray, IchigoRamamDataArray, RavenFortHallDataArray, RavenFortHall2DataArray, AbandonedHouseDataArray, HammerFlameDataArray, SilentVeilTunnelDataArray, DustValeDataArray, ElderWoodDataArray, EmeraldRiftDataArray, FrostSpireLakeDataArray, RavenFortDataArray, SilentVeilDataArray, WoodPassDataArray }
+export { IglooDataArray, WarehouseDataArray, EndLandDataArray, DuskWatchDataArray, CliffPassDataArray, ChillwindRoadDataArray, FrostcliffRoadDataArray, HomeDataArray, HouseDataArray, IchiranRamamDataArray, IchigoRamamDataArray, RavenFortHallDataArray, RavenFortHall2DataArray, AbandonedHouseDataArray, HammerFlameDataArray, SilentVeilTunnelDataArray, DustValeDataArray, ElderWoodDataArray, EmeraldRiftDataArray, FrostSpireLakeDataArray, RavenFortDataArray, SilentVeilDataArray, WoodPassDataArray }

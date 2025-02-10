@@ -116,6 +116,8 @@ export class Player extends Living {
   draw() {
     if (this.resistance) this.resistance -= 1;
 
+    console.log(this.positionX, this.positionY)
+
     const drawX = this.canvasWidth / 2;
     const drawY = this.canvasHeight / 2;
 
