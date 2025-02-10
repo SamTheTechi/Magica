@@ -168,7 +168,7 @@ export class Enemy extends Living {
 
   damageTaken(dmg, ani, x, y) {
     if (this.resistance === 0) {
-      this.resistance = 40;
+      this.resistance = 35;
       this.hp -= dmg;
       this.showBar = true;
       if (!this.hideBarTimeout) {

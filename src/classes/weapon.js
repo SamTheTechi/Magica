@@ -170,7 +170,7 @@ export class Weapon extends Base {
 
             setTimeout(() => {
               this.canfire = true;
-            }, 400)
+            }, 450)
 
           }
         }
@@ -226,6 +226,7 @@ export class Weapon extends Base {
             this.swinging = false;
           }, 350);
 
+          this.canfire = false;
           setTimeout(() => {
             this.canfire = true;
           }, 650)

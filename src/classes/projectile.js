@@ -65,7 +65,7 @@ export class Projetile extends Base {
     }
 
     if (this.speed > 7) this.speed -= this.decrementRate;
-    else if (this.speed > 0) this.speed -= this.decrementRate * 2;
+    else if (this.speed > 0) this.speed -= this.decrementRate * 2.5;
     else if (this.speed <= 0) this.dead = true
 
     ctx.drawImage(

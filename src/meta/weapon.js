@@ -28,7 +28,7 @@ export const WeaponMetaData = {
       width: 15,
       frames: 2,
       duration: 1,
-      speed: 13,
+      speed: 14,
       decrementRate: 0.1175,
       name: `arrow`,
     }
@@ -51,7 +51,7 @@ export const WeaponMetaData = {
       width: 16,
       frames: 2,
       duration: 4,
-      speed: 11,
+      speed: 12,
       decrementRate: 0.10,
       name: `shuriken`,
     }
@@ -85,7 +85,7 @@ export const WeaponMetaData = {
       width: 16,
       frames: 4,
       duration: 4,
-      speed: 11.5,
+      speed: 12,
       decrementRate: 0.056,
       name: `fireBall`,
     }

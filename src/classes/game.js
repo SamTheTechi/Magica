@@ -207,7 +207,7 @@ export class Game {
             }
             ctx.globalAlpha = this.alpha;
           }, 16);
-        }, 650);
+        }, 700);
       }
       ctx.globalAlpha = this.alpha;
     }, 16);
