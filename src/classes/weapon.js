@@ -28,7 +28,7 @@ export class Weapon extends Base {
     this.prevDirection = 0;
     this.maxSwingDistance = MetaData.height * 3.25;
     this.canfire = true;
-    if (this.type === 'range') this.Projectile = MetaData.Projectile;
+    if (this.type === "range") this.Projectile = MetaData.Projectile;
   }
 
   draw(positionX, positionY, direction) {
@@ -40,11 +40,11 @@ export class Weapon extends Base {
 
       this.positionX = centerX;
       this.positionY = centerY;
-      if (this.parent === 'player') {
+      if (this.parent === "player") {
         centerX = this.canvasWidth / 2;
         centerY = this.canvasHeight / 2;
       }
-      if (this.type === 'melee') {
+      if (this.type === "melee") {
         if (this.prevDirection !== direction) {
           switch (this.prevDirection) {
             case Direction.up:
@@ -115,35 +115,47 @@ export class Weapon extends Base {
 
         this.speed = this.swingDirection === 1 ? 15 : 5;
 
-        ctx.save()
+        ctx.save();
         switch (direction) {
           case Direction.down:
             bufferY -= 35;
             this.swingOffsetY += this.speed * this.swingDirection;
-            ctx.translate(centerX + this.swingOffsetX / 1 - 10 + bufferX, centerY + this.swingOffsetY / 1 + 25 + bufferY)
+            ctx.translate(
+              centerX + this.swingOffsetX / 1 - 10 + bufferX,
+              centerY + this.swingOffsetY / 1 + 25 + bufferY,
+            );
             ctx.rotate((180 * Math.PI) / 180);
-            this.restartPosition(0, 30)
+            this.restartPosition(0, 30);
             break;
           case Direction.up:
             bufferY += 35;
             this.swingOffsetY -= this.speed * this.swingDirection;
-            ctx.translate(centerX + this.swingOffsetX / 1 - 10 + bufferX, centerY + this.swingOffsetY / 1 - 25 + bufferY)
+            ctx.translate(
+              centerX + this.swingOffsetX / 1 - 10 + bufferX,
+              centerY + this.swingOffsetY / 1 - 25 + bufferY,
+            );
             ctx.rotate((0 * Math.PI) / 180);
             this.restartPosition(0, -30);
             break;
           case Direction.left:
             bufferX += 35;
             this.swingOffsetX -= this.speed * this.swingDirection;
-            ctx.translate(centerX + this.swingOffsetX / 1 - 25 + bufferX, centerY + this.swingOffsetY / 1 + 15 + bufferY)
+            ctx.translate(
+              centerX + this.swingOffsetX / 1 - 25 + bufferX,
+              centerY + this.swingOffsetY / 1 + 15 + bufferY,
+            );
             ctx.rotate((270 * Math.PI) / 180);
-            this.restartPosition(-30, 0)
+            this.restartPosition(-30, 0);
             break;
           case Direction.right:
             bufferX -= 35;
             this.swingOffsetX += this.speed * this.swingDirection;
-            ctx.translate(centerX + this.swingOffsetX / 1 + 25 + bufferX, centerY + this.swingOffsetY / 1 + 15 + bufferY)
+            ctx.translate(
+              centerX + this.swingOffsetX / 1 + 25 + bufferX,
+              centerY + this.swingOffsetY / 1 + 15 + bufferY,
+            );
             ctx.rotate((90 * Math.PI) / 180);
-            this.restartPosition(30, 0)
+            this.restartPosition(30, 0);
             break;
         }
         ctx.drawImage(
@@ -151,9 +163,9 @@ export class Weapon extends Base {
           -this.width * 1.75,
           -this.height * 1.75,
           this.width * 3.5,
-          this.height * 3.5
+          this.height * 3.5,
         );
-        ctx.restore()
+        ctx.restore();
 
         if (
           Math.abs(this.swingOffsetY) >= this.maxSwingDistance ||
@@ -170,38 +182,35 @@ export class Weapon extends Base {
 
             setTimeout(() => {
               this.canfire = true;
-            }, 450)
-
+            }, 450);
           }
         }
         this.prevDirection = direction;
-      }
-      else if (this.type === 'range') {
-
-        ctx.save()
+      } else if (this.type === "range") {
+        ctx.save();
         switch (direction) {
           case Direction.down:
             bufferX -= 10;
             bufferY += 40;
-            ctx.translate(centerX + bufferX, centerY + bufferY)
+            ctx.translate(centerX + bufferX, centerY + bufferY);
             ctx.rotate((180 * Math.PI) / 180);
             break;
           case Direction.up:
             bufferX -= 10;
             bufferY -= 35;
-            ctx.translate(centerX + bufferX, centerY + bufferY)
+            ctx.translate(centerX + bufferX, centerY + bufferY);
             ctx.rotate((0 * Math.PI) / 180);
             break;
           case Direction.left:
             bufferX -= 35;
             bufferY += 15;
-            ctx.translate(centerX + bufferX, centerY + bufferY)
+            ctx.translate(centerX + bufferX, centerY + bufferY);
             ctx.rotate((270 * Math.PI) / 180);
             break;
           case Direction.right:
             bufferX += 35;
             bufferY += 15;
-            ctx.translate(centerX + bufferX, centerY + bufferY)
+            ctx.translate(centerX + bufferX, centerY + bufferY);
             ctx.rotate((90 * Math.PI) / 180);
             break;
         }
@@ -211,15 +220,21 @@ export class Weapon extends Base {
           -this.width * 1.75,
           -this.height * 1.75,
           this.width * 3.5,
-          this.height * 3.5
+          this.height * 3.5,
         );
-        ctx.restore()
+        ctx.restore();
 
         if (!this.isPausing) {
           this.isPausing = true;
           this.swingDirection = 0;
           this.canfire = false;
-          eventEmmiter.emit(EventMaping.PROJECTILE_FIRE, [this.positionX, this.positionY, direction, this.parent, this.Projectile]);
+          eventEmmiter.emit(EventMaping.PROJECTILE_FIRE, [
+            this.positionX,
+            this.positionY,
+            direction,
+            this.parent,
+            this.Projectile,
+          ]);
           setTimeout(() => {
             this.isPausing = false;
             this.swingDirection = -1;
@@ -229,17 +244,19 @@ export class Weapon extends Base {
           this.canfire = false;
           setTimeout(() => {
             this.canfire = true;
-          }, 650)
+          }, 650);
         }
-
       }
     }
   }
 
   restartPosition(x, y) {
     if (this.type === `melee`) {
-
-      if (this.swingDirection === -1 && this.swingOffsetY === y && this.swingOffsetX === x) {
+      if (
+        this.swingDirection === -1 &&
+        this.swingOffsetY === y &&
+        this.swingOffsetX === x
+      ) {
         this.positionX = 0;
         this.positionY = 0;
         this.swingOffsetY = 0;
@@ -263,10 +280,9 @@ export class Weapon extends Base {
   collisionBoundries() {
     return {
       top: this.positionY + 10,
-      left: this.positionX - (this.size) / 2 + 10,
-      bottom: this.positionY + (this.size) - 10,
-      right: this.positionX + (this.size) / 2 - 10,
+      left: this.positionX - this.size / 2 + 10,
+      bottom: this.positionY + this.size - 10,
+      right: this.positionX + this.size / 2 - 10,
     };
   }
 }
-

@@ -8,7 +8,7 @@ import { Music } from "../declare";
 export class Enemy extends Living {
   constructor(MetaData, positionX, positionY, index) {
     super(positionX, positionY);
-    this.type = 'enemy';
+    this.type = "enemy";
     this.moving = false;
     this.resistance = 0;
     this.name = MetaData.name;
@@ -28,14 +28,18 @@ export class Enemy extends Living {
     this.count = 10;
     this.prev = this.direction;
     this.idleCounter = 0;
-    this.hpBarProgress = Object.assign(new Image(), { src: `./HUD/LifeBarMiniProgress.png` })
-    this.hpBarUnder = Object.assign(new Image(), { src: `./HUD/LifeBarMiniUnder.png` })
+    this.hpBarProgress = Object.assign(new Image(), {
+      src: `./HUD/LifeBarMiniProgress.png`,
+    });
+    this.hpBarUnder = Object.assign(new Image(), {
+      src: `./HUD/LifeBarMiniUnder.png`,
+    });
   }
 
   draw(Camera) {
     let playerX = Camera.X + this.canvasWidth / 2;
     let playerY = Camera.Y + this.canvasHeight / 2;
-    this.movement(playerX, playerY)
+    this.movement(playerX, playerY);
 
     ctx.drawImage(
       this.image,
@@ -46,7 +50,7 @@ export class Enemy extends Living {
       this.positionX - Camera.X,
       this.positionY - Camera.Y,
       this.width * MagnificationFactor,
-      this.height * MagnificationFactor
+      this.height * MagnificationFactor,
     );
 
     if (this.showBar) {
@@ -59,10 +63,10 @@ export class Enemy extends Living {
         this.positionX - Camera.X,
         this.positionY - Camera.Y - 7,
         this.width * 4,
-        this.height * 3
+        this.height * 3,
       );
       const hpPercentage = Math.max(this.hp / this.maxHp, 0);
-      const hpBarWidth = (this.width * 4) * hpPercentage;
+      const hpBarWidth = this.width * 4 * hpPercentage;
       ctx.drawImage(
         this.hpBarProgress,
         0,
@@ -72,7 +76,7 @@ export class Enemy extends Living {
         this.positionX - Camera.X,
         this.positionY - Camera.Y - 7,
         hpBarWidth,
-        this.height * 3
+        this.height * 3,
       );
     }
 
@@ -92,7 +96,6 @@ export class Enemy extends Living {
       this.positionY - this.proximity < playerY
     ) {
       if (this.resistance % 1.25 === 0) {
-
         this.showBar = true;
         this.moving = true;
         this.idleCounter = 0;
@@ -133,15 +136,13 @@ export class Enemy extends Living {
         this.hideBarTimeout = setTimeout(() => {
           this.hideBarTimeout = null;
           this.showBar = false;
-        }, 3000)
+        }, 3000);
       }
     }
     if (this.resistance) {
       this.resistance -= 1;
     }
   }
-
-
 
   getDirection(playerX, playerY) {
     const distances = {
@@ -151,14 +152,35 @@ export class Enemy extends Living {
       right: playerX - this.positionX,
     };
 
-    const max = Math.max(distances.up, distances.down, distances.left, distances.right);
+    const max = Math.max(
+      distances.up,
+      distances.down,
+      distances.left,
+      distances.right,
+    );
     const buffer = 5;
 
     const weight = 0.7;
-    if (this.direction === Direction.down && distances.up + buffer >= max * weight) return Direction.down;
-    if (this.direction === Direction.up && distances.down + buffer >= max * weight) return Direction.up;
-    if (this.direction === Direction.left && distances.left + buffer >= max * weight) return Direction.left;
-    if (this.direction === Direction.right && distances.right + buffer >= max * weight) return Direction.right;
+    if (
+      this.direction === Direction.down &&
+      distances.up + buffer >= max * weight
+    )
+      return Direction.down;
+    if (
+      this.direction === Direction.up &&
+      distances.down + buffer >= max * weight
+    )
+      return Direction.up;
+    if (
+      this.direction === Direction.left &&
+      distances.left + buffer >= max * weight
+    )
+      return Direction.left;
+    if (
+      this.direction === Direction.right &&
+      distances.right + buffer >= max * weight
+    )
+      return Direction.right;
 
     if (distances.up === max) return Direction.down;
     if (distances.down === max) return Direction.up;
@@ -175,16 +197,16 @@ export class Enemy extends Living {
         this.hideBarTimeout = setTimeout(() => {
           this.hideBarTimeout = null;
           this.showBar = false;
-        }, 1000)
+        }, 1000);
       }
       if (this.hp <= 0) {
         eventEmmiter.emit(EventMaping.ENEMY_DEAD, [this.index, this.score]);
-        eventEmmiter.emit(EventMaping.ANIMATION, ['spirit', x, y]);
+        eventEmmiter.emit(EventMaping.ANIMATION, ["spirit", x, y]);
         this.dead = true;
-        Music.playAudio('kill')
+        Music.playAudio("kill");
         return 0;
       }
-      Music.playAudio('hit')
+      Music.playAudio("hit");
       eventEmmiter.emit(EventMaping.ANIMATION, [ani, x, y]);
     }
   }
