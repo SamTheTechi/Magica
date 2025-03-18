@@ -1,52 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Playwrite+DE+VA+Guides&family=Press+Start+2P&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <link rel="styleSheet" href="menu.css">
-  <link rel="styleSheet" href="style.css">
-  <script type="module" src="/src/main.js"></script>
-  <script type="module" src="/src/menu.js"></script>
-  <title>Magica</title>
-</head>
-
-<body>
-  <div id="loading-screen">Loading...</div>
-  <div id="continer">
-    <canvas id="canvas"></canvas>
-  </div>
-  <div class="landing">
-    <div class="tit">MAGICA!</div>
-    <div class="des">The Adventure</div>
-    <div class="cont">Press to continue</div>
-  </div>
-  <div class="selector">
-    <div class="container">
-      <div class="head">Select Character</div>
-      <div class="char">
-        <div class="faceset" data-value="Princess"><img src="/Actor/Characters/Princess/Faceset.png"></div>
-        <div class="faceset" data-value="Noble"><img src="/Actor/Characters/Noble/Faceset.png"></div>
-        <div class="faceset" data-value="Ninja"><img src="/Actor/Characters/Ninja/Faceset.png"></div>
-        <div class="faceset" data-value="Samurai"><img src="/Actor/Characters/Samurai/Faceset.png"></div>
-      </div>
-    </div>
-  </div>
-  <div class="gameover">
-    <div class="tit">Game Over</div>
-    <div class="gcont">Will Restart Soon</div>
-  </div>
-  <div class="gamewon">
-    <div class="tit">You Won!</div>
-    <div class="gcont">Thanks For <br> Playing!</div>
-  </div>
-
-</body>
-
-
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZeldaArc</title>
+  </head>
+  <body>
+    <canvas id="canvas1"></canvas>
+    <h1 id="overtitle">GAME OVER!</h1>
+  </body>
+  <script src="./Data/block.js"></script>
+  <script src="./Data/enemyData.js"></script>
+  <script src="./classes/cooldown.js"></script>
+  <script src="./classes/game.js"></script>
+  <script src="./classes/collision.js"></script>
+  <script src="./classes/Player.js"></script>
+  <script src="./classes/enemy.js"></script>
+  <script src="./util/spawnEnemy.js"></script>
+  <script src="./util/distance.js"></script>
+  <script src="./util/collisionDetection.js"></script>
+  <script src="./index.js"></script>
 </html>
