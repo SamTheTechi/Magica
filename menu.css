@@ -36,6 +36,13 @@
   color: #a06531;
 }
 
+.landing .controls {
+  position: absolute;
+  top: 62%;
+  font-size: 1.1rem;
+  color: #a06531;
+}
+
 .selector {
   position: absolute;
   z-index: 5;

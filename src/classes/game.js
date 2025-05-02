@@ -1,18 +1,33 @@
-import { AnimalsSpawnList, AnimationSpawnList, EnemySpawnList, ItemSpawnList, NPCSpawnList } from "../adjecentLists";
+import {
+  AnimalsSpawnList,
+  AnimationSpawnList,
+  EnemySpawnList,
+  ItemSpawnList,
+  NPCSpawnList,
+} from "../adjecentLists";
 import { ctx, canvasWidth, canvasHeight } from "../store/canvas";
-import { letter, canClose, closeLetter, forceCloseLetter } from "../ui/letterMsg";
-import { PushGameObjectArray, OverWrightGameObjectArray, ReadGameObjectArray } from "../store/gameObject";
+import {
+  letter,
+  canClose,
+  closeLetter,
+  forceCloseLetter,
+} from "../ui/letterMsg";
+import {
+  PushGameObjectArray,
+  OverWrightGameObjectArray,
+  ReadGameObjectArray,
+} from "../store/gameObject";
 import { LetterMetaData } from "../meta/letter";
 import { ItemMetaData } from "../meta/item";
 import { Projetile } from "./projectile";
 import { Node } from "./base/node";
 import { Items } from "./item";
 import { Collision } from "./base/collision";
-import { Enemy } from './enemy'
+import { Enemy } from "./enemy";
 import { Boss } from "./boss";
 import { Animals } from "./animal";
 import { EnemyMetaData } from "../meta/enemy";
-import { AnimalMetaData } from "../meta/animal"
+import { AnimalMetaData } from "../meta/animal";
 import { WeatherMetaData } from "../meta/weather";
 import { NpcMetaData } from "../meta/npc";
 import { Weather } from "./weather";
@@ -35,17 +50,26 @@ export class Game {
     this.Score = 0;
     this.alpha = 1;
     this.value = false;
-    this.loadMapMetaData(MetaData)
+    this.loadMapMetaData(MetaData);
   }
 
   loadMapMetaData(metaData) {
     for (const i in metaData) {
-      const { Name, DataArray, Image, neighbours, Weather, audio, overlay } = metaData[i];
-      this.nodes[Name] = new Node(Name, DataArray, Weather, Image, neighbours, audio, overlay)
+      const { Name, DataArray, Image, neighbours, Weather, audio, overlay } =
+        metaData[i];
+      this.nodes[Name] = new Node(
+        Name,
+        DataArray,
+        Weather,
+        Image,
+        neighbours,
+        audio,
+        overlay,
+      );
     }
     this.value = true;
-    this.currentNode = this.nodes['home'];
-    this.generateMap()
+    this.currentNode = this.nodes["home"];
+    this.generateMap();
     this.generateAdjecentList();
   }
 
@@ -56,115 +80,177 @@ export class Game {
   draw(Camera) {
     const drawX = this.positionX - Camera.X;
     const drawY = this.positionY - Camera.Y;
-    ctx.drawImage(this.currentNode.image, drawX, drawY)
-    this.generateWeather()
-    UpdateScore(this.Score)
+    ctx.drawImage(this.currentNode.image, drawX, drawY);
+    this.generateWeather();
+    UpdateScore(this.Score);
   }
 
   drawOverlay(Camera) {
     if (this.currentNode.overlay) {
       const drawX = this.positionX - Camera.X;
       const drawY = this.positionY - Camera.Y;
-      ctx.drawImage(this.currentNode.overlay, drawX, drawY)
+      ctx.drawImage(this.currentNode.overlay, drawX, drawY);
     }
   }
 
   generateMap() {
     Music.stopAllAudio();
-    const filterObject = ReadGameObjectArray().filter(
-      (obj) => { return obj.type === 'player' }
-    );
+    const filterObject = ReadGameObjectArray().filter((obj) => {
+      return obj.type === "player";
+    });
     if (this.currentNode.audio !== undefined)
       Music.playAudio(this.currentNode.audio);
-    OverWrightGameObjectArray(filterObject)
+    OverWrightGameObjectArray(filterObject);
     this.currentNode.dataArray.forEach((Xaxis, i) => {
       Xaxis.forEach((Yaxis, j) => {
         const x = j * Node.PixilSize;
-        const y = i * Node.PixilSize
+        const y = i * Node.PixilSize;
         if (Yaxis === 1) {
-          PushGameObjectArray(new Collision(x, y, Node.PixilSize, 'collision'));
+          PushGameObjectArray(new Collision(x, y, Node.PixilSize, "collision"));
+        } else if (typeof Yaxis === "string") {
+          PushGameObjectArray(
+            new Collision(x, y, Node.PixilSize, "location", Yaxis),
+          );
         }
-        else if (typeof Yaxis === 'string') {
-          PushGameObjectArray(new Collision(x, y, Node.PixilSize, 'location', Yaxis));
-        }
-      })
-    })
+      });
+    });
   }
 
   switchMap(player, name) {
     this.fade();
-    const loc = this.currentNode.neighbour.filter((loc) => loc.name === name)[0];
+    const loc = this.currentNode.neighbour.filter(
+      (loc) => loc.name === name,
+    )[0];
     player.movementSpeed = 0;
     ShowBanner(name);
     forceCloseLetter();
     setTimeout(() => {
-      player.updatePlayerLocaion(loc.positionX, loc.positionY, loc.direction)
+      player.updatePlayerLocaion(loc.positionX, loc.positionY, loc.direction);
       this.currentNode = this.nodes[name];
       this.generateMap();
       this.generateAdjecentList();
-      player.movementSpeed = 5.5;
-    }, 700)
+      player.movementSpeed = 5.6;
+    }, 700);
   }
 
   generateWeather() {
-    if (this.currentNode.weather === 'none' || this.currentNode.weather === undefined) return;
+    if (
+      this.currentNode.weather === "none" ||
+      this.currentNode.weather === undefined
+    )
+      return;
     const weather = this.currentNode.dataArray.map((Xaxis) => {
       return Xaxis.map(() => {
-        if (Math.floor(Math.random() * (100000 / WeatherMetaData[this.currentNode.weather].frequency)) === 0) {
+        if (
+          Math.floor(
+            Math.random() *
+              (100000 / WeatherMetaData[this.currentNode.weather].frequency),
+          ) === 0
+        ) {
           return this.currentNode.weather;
         }
-        return 0
-      })
-    })
+        return 0;
+      });
+    });
     weather.forEach((Xaxis, i) => {
       Xaxis.forEach((Yaxis, j) => {
         const x = j * Node.PixilSize;
         const y = (i - 5) * Node.PixilSize;
         if (WeatherMetaData[Yaxis]) {
-          PushGameObjectArray(new Weather(WeatherMetaData[Yaxis], x, y))
+          PushGameObjectArray(new Weather(WeatherMetaData[Yaxis], x, y));
         }
-      })
-    })
+      });
+    });
   }
 
   generateAdjecentList() {
     if (AnimationSpawnList[this.currentNode.name] !== undefined)
       AnimationSpawnList[this.currentNode.name].forEach((item) => {
-        PushGameObjectArray(new Animation(AnimationMetaData[item.name], item.positionX, item.positionY))
+        PushGameObjectArray(
+          new Animation(
+            AnimationMetaData[item.name],
+            item.positionX,
+            item.positionY,
+          ),
+        );
       });
     if (ItemSpawnList[this.currentNode.name] !== undefined)
       ItemSpawnList[this.currentNode.name].forEach((item, index) => {
         if (item.direction)
-          PushGameObjectArray(new Items(ItemMetaData[item.name], item.positionX, item.positionY, index))
+          PushGameObjectArray(
+            new Items(
+              ItemMetaData[item.name],
+              item.positionX,
+              item.positionY,
+              index,
+            ),
+          );
       });
     if (EnemySpawnList[this.currentNode.name] !== undefined)
       EnemySpawnList[this.currentNode.name].forEach((item, index) => {
         if (item.direction) {
-          if (item.name !== 'boss')
-            PushGameObjectArray(new Enemy(EnemyMetaData[item.name], item.positionX, item.positionY, index))
+          if (item.name !== "boss")
+            PushGameObjectArray(
+              new Enemy(
+                EnemyMetaData[item.name],
+                item.positionX,
+                item.positionY,
+                index,
+              ),
+            );
           else {
-            PushGameObjectArray(new Boss(EnemyMetaData[item.name], item.positionX, item.positionY, index))
+            PushGameObjectArray(
+              new Boss(
+                EnemyMetaData[item.name],
+                item.positionX,
+                item.positionY,
+                index,
+              ),
+            );
           }
         }
-      })
+      });
     if (AnimalsSpawnList[this.currentNode.name] !== undefined)
       AnimalsSpawnList[this.currentNode.name].forEach((item, index) => {
         if (item.direction)
-          PushGameObjectArray(new Animals(AnimalMetaData[item.name], item.positionX, item.positionY, index))
+          PushGameObjectArray(
+            new Animals(
+              AnimalMetaData[item.name],
+              item.positionX,
+              item.positionY,
+              index,
+            ),
+          );
       });
     if (NPCSpawnList[this.currentNode.name] !== undefined)
       NPCSpawnList[this.currentNode.name].forEach((item, index) => {
         if (item.direction)
-          PushGameObjectArray(new NPC(NpcMetaData[item.name], item.positionX, item.positionY, index))
+          PushGameObjectArray(
+            new NPC(
+              NpcMetaData[item.name],
+              item.positionX,
+              item.positionY,
+              index,
+            ),
+          );
       });
   }
 
   addProjectile(data) {
-    PushGameObjectArray(new Projetile(data[0], data[1], data[2], data[3], data[4]))
+    PushGameObjectArray(
+      new Projetile(data[0], data[1], data[2], data[3], data[4]),
+    );
   }
 
   addAnimation(data) {
-    PushGameObjectArray(new Animation(AnimationMetaData[data[0]], data[1], data[2], data[3] ? false : true))
+    PushGameObjectArray(
+      new Animation(
+        AnimationMetaData[data[0]],
+        data[1],
+        data[2],
+        data[3] ? false : true,
+      ),
+    );
   }
 
   updateScore(score) {
@@ -183,7 +269,7 @@ export class Game {
   }
 
   closeLetter() {
-    closeLetter()
+    closeLetter();
   }
 
   fade() {
@@ -212,5 +298,4 @@ export class Game {
       ctx.globalAlpha = this.alpha;
     }, 16);
   }
-
 }

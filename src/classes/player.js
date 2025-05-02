@@ -16,9 +16,9 @@ export class Player extends Living {
     this.height = 16;
     this.equipedWeapon = null;
     this.inventry = [];
-    this.movementSpeed = 5.5;
+    this.movementSpeed = 5.6;
     this.moving = false;
-    this.hp = 12;
+    this.hp = 20;
     this.potion = 1;
     this.movementRestriction = {
       up: true,
@@ -26,36 +26,51 @@ export class Player extends Living {
       left: true,
       right: true,
     };
-    this.hpImage = Object.assign(new Image(), { src: `./HUD/Heart.png` })
-    this.shadowImage = Object.assign(new Image(), { src: `./Actor/Characters/Shadow.png` });
-    this.image = Object.assign(new Image(), { src: `./Actor/Characters/${chartype}/SpriteSheet.png` });
-    this.faceSet = Object.assign(new Image(), { src: `./Actor/Characters/${chartype}/Faceset.png` });
-    this.faceFrame = Object.assign(new Image(), { src: './HUD/FacesetBox.png' })
-    this.potionImage = Object.assign(new Image(), { src: `./Items/Potion/LifePot.png` })
-    this.type = 'player';
+    this.hpImage = Object.assign(new Image(), { src: `./HUD/Heart.png` });
+    this.shadowImage = Object.assign(new Image(), {
+      src: `./Actor/Characters/Shadow.png`,
+    });
+    this.image = Object.assign(new Image(), {
+      src: `./Actor/Characters/${chartype}/SpriteSheet.png`,
+    });
+    this.faceSet = Object.assign(new Image(), {
+      src: `./Actor/Characters/${chartype}/Faceset.png`,
+    });
+    this.faceFrame = Object.assign(new Image(), {
+      src: "./HUD/FacesetBox.png",
+    });
+    this.potionImage = Object.assign(new Image(), {
+      src: `./Items/Potion/LifePot.png`,
+    });
+    this.type = "player";
     this.idleCounter = 0;
     this.idle = true;
     this.buffer = 3;
   }
 
   addWeapon(weapon) {
-    let val = this.inventry.findIndex((obj) => obj.type === weapon.type)
+    let val = this.inventry.findIndex((obj) => obj.type === weapon.type);
     if (val !== -1) {
       this.inventry.splice(val, 1, weapon);
       this.equipedWeapon = weapon;
-    }
-    else {
-      this.inventry.push(weapon)
+    } else {
+      this.inventry.push(weapon);
       this.equipedWeapon = weapon;
     }
   }
 
   switchWeapon() {
-    if (this.inventry.length > 1 && (!this.equipedWeapon.swinging || this.equipedWeapon.swinging === undefined)) {
-      let index = this.inventry.findIndex(weapon => weapon === this.equipedWeapon);
+    if (
+      this.inventry.length > 1 &&
+      (!this.equipedWeapon.swinging ||
+        this.equipedWeapon.swinging === undefined)
+    ) {
+      let index = this.inventry.findIndex(
+        (weapon) => weapon === this.equipedWeapon,
+      );
       index = (index + 1) % this.inventry.length;
       this.equipedWeapon = this.inventry[index];
-      Music.playAudio('switch')
+      Music.playAudio("switch");
     }
   }
 
@@ -63,17 +78,17 @@ export class Player extends Living {
     if (this.equipedWeapon && this.equipedWeapon.canfire) {
       this.idleCounter = 0;
       this.equipedWeapon.attack();
-      Music.playAudio(this.equipedWeapon.audio)
+      Music.playAudio(this.equipedWeapon.audio);
     }
   }
 
   damageTaken(dmg, ani, x, y) {
-    this.idleCounter = 0
+    this.idleCounter = 0;
     if (this.resistance === 0) {
-      this.resistance = 45;
+      this.resistance = 60;
       eventEmmiter.emit(EventMaping.ANIMATION, [ani, x, y]);
       this.hp -= dmg;
-      Music.playAudio('damage')
+      Music.playAudio("damage");
     } else if (this.hp <= 0) {
       this.dead = true;
       eventEmmiter.emit(EventMaping.GAME_OVER);
@@ -81,42 +96,39 @@ export class Player extends Living {
   }
 
   eatFood() {
-    if (this.hp < 12) {
-      if (this.hp === 11) this.hp += 1;
+    if (this.hp < 20) {
+      if (this.hp === 19) this.hp += 1;
       else this.hp += 2;
       return true;
-    }
-    else
-      return false
+    } else return false;
   }
 
   usePotion() {
     let count = 0;
     let time = setInterval(() => {
-      if (this.hp >= 12 || count >= 4) {
+      if (this.hp >= 20 || count >= 6) {
         clearInterval(time);
         return;
       }
       this.hp++;
       count++;
     }, 200);
-    Music.playAudio('potion')
+    Music.playAudio("potion");
     this.potion--;
   }
 
   canUsePotion() {
-    return this.hp < 12 && this.potion > 0;
+    return this.hp < 20 && this.potion > 0;
   }
 
   addPotion() {
-    if (this.potion <= 3)
-      this.potion++;
+    if (this.potion <= 3) this.potion++;
   }
 
   draw() {
     if (this.resistance) this.resistance -= 1;
 
-    console.log(this.positionX, this.positionY)
+    console.log(this.positionX, this.positionY);
 
     const drawX = this.canvasWidth / 2;
     const drawY = this.canvasHeight / 2;
@@ -127,7 +139,7 @@ export class Player extends Living {
     if (!this.moving && this.idleCounter >= 230) {
       this.frame = 6;
       if (this.idle) {
-        Music.playAudio('idle')
+        Music.playAudio("idle");
       }
       this.idle = false;
       this.direction = Direction.left;
@@ -147,7 +159,7 @@ export class Player extends Living {
       drawX + this.width / 2,
       drawY + this.height * 2.7 + 1,
       this.width * MagnificationFactor,
-      this.height * MagnificationFactor
+      this.height * MagnificationFactor,
     );
 
     ctx.drawImage(
@@ -159,8 +171,8 @@ export class Player extends Living {
       drawX,
       drawY,
       this.width * MagnificationFactor,
-      this.height * MagnificationFactor
-    )
+      this.height * MagnificationFactor,
+    );
     this.drawPotion();
     this.drawHp();
     this.drawLogoWeapon();
@@ -210,27 +222,23 @@ export class Player extends Living {
             this.movementRestriction.down = true;
             this.movementRestriction.left = true;
             this.movementRestriction.up = true;
-          } break;
+          }
+          break;
         default:
       }
       if (this.equipedWeapon !== null && this.equipedWeapon.swinging) {
         this.frame = 4;
-      }
-      else if (this.gameframe % 8 === 0) {
+      } else if (this.gameframe % 8 === 0) {
         if (this.frame < 3) this.frame++;
         else this.frame = 0;
       }
-    }
-    else if (this.equipedWeapon !== null && this.equipedWeapon.swinging) {
+    } else if (this.equipedWeapon !== null && this.equipedWeapon.swinging) {
       this.frame = 4;
-    }
-    else {
+    } else {
       this.frame = 0;
     }
     this.gameframe++;
   }
-
-
 
   drawHp() {
     ctx.drawImage(
@@ -242,8 +250,8 @@ export class Player extends Living {
       10,
       0,
       this.width * MagnificationFactor,
-      this.height * MagnificationFactor
-    )
+      this.height * MagnificationFactor,
+    );
     ctx.drawImage(
       this.hpImage,
       HeartMapping.Second[this.hp] * 16,
@@ -253,8 +261,8 @@ export class Player extends Living {
       12 + this.width * MagnificationFactor,
       0,
       this.width * MagnificationFactor,
-      this.height * MagnificationFactor
-    )
+      this.height * MagnificationFactor,
+    );
     ctx.drawImage(
       this.hpImage,
       HeartMapping.Third[this.hp] * 16,
@@ -264,8 +272,30 @@ export class Player extends Living {
       14 + this.width * 2 * MagnificationFactor,
       0,
       this.width * MagnificationFactor,
-      this.height * MagnificationFactor
-    )
+      this.height * MagnificationFactor,
+    );
+    ctx.drawImage(
+      this.hpImage,
+      HeartMapping.Fourth[this.hp] * 16,
+      0,
+      this.width,
+      this.height,
+      16 + this.width * 3 * MagnificationFactor,
+      0,
+      this.width * MagnificationFactor,
+      this.height * MagnificationFactor,
+    );
+    ctx.drawImage(
+      this.hpImage,
+      HeartMapping.Fifth[this.hp] * 16,
+      0,
+      this.width,
+      this.height,
+      18 + this.width * 4 * MagnificationFactor,
+      0,
+      this.width * MagnificationFactor,
+      this.height * MagnificationFactor,
+    );
   }
 
   drawPotion() {
@@ -276,11 +306,11 @@ export class Player extends Living {
         0,
         this.width,
         this.height,
-        20 + (this.width * i * MagnificationFactor),
+        20 + this.width * i * MagnificationFactor,
         this.height * 5,
         this.width * MagnificationFactor,
-        this.height * MagnificationFactor
-      )
+        this.height * MagnificationFactor,
+      );
     }
   }
 
@@ -291,33 +321,33 @@ export class Player extends Living {
       0,
       this.width * 4,
       this.height * 4,
-      this.canvasWidth - (this.width * 8),
+      this.canvasWidth - this.width * 8,
       this.height,
       this.width * 8,
       this.height * 8,
-    )
+    );
     ctx.drawImage(
       this.faceSet,
       0,
       0,
       this.width * 4,
       this.height * 4,
-      this.canvasWidth - (this.width * 7.5),
+      this.canvasWidth - this.width * 7.5,
       this.height * 1.5,
       this.width * 8,
       this.height * 8,
-    )
+    );
     ctx.drawImage(
       this.faceFrame,
       0,
       0,
       this.width * 4,
       this.height * 4,
-      this.canvasWidth - (this.width * 12.5),
+      this.canvasWidth - this.width * 12.5,
       this.height * 1,
       this.width * 6,
       this.height * 6,
-    )
+    );
     if (this.equipedWeapon != null) {
       ctx.drawImage(
         this.equipedWeapon.icon,
@@ -325,11 +355,11 @@ export class Player extends Living {
         0,
         this.width * 4,
         this.height * 4,
-        this.canvasWidth - (this.width * 11.5),
+        this.canvasWidth - this.width * 11.5,
         this.height * 1.5,
         this.width * 11,
         this.height * 11,
-      )
+      );
     }
   }
 
