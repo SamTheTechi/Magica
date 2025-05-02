@@ -21,12 +21,7 @@
 ### 1️⃣ Clone the Repository
 
 ```sh
-git clone https://github.com/yourusername/magica.git
-cd magica
-```
-
-```sh
-git clone https://github.com/yourusername/magica.git
+git clone https://github.com/SamTheTechi/magica.git
 cd magica
 ```
 
