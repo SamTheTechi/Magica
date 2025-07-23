@@ -1,7 +1,10 @@
 export const AnimalMetaData = {
   cow: {
-    name: 'cow',
-    Image: Object.assign(new Image(), { src: './Actor/Animals/Cow/SpriteSheet2.png' }),
+    name: "cow",
+    Image: Object.assign(new Image(), {
+      src: "./Actor/Animals/Cow/SpriteSheet2.png",
+      alt: "cow sprite",
+    }),
     speed: 1,
     size: true,
     range: 100,
@@ -9,8 +12,11 @@ export const AnimalMetaData = {
     width: 24,
   },
   horse: {
-    name: 'horse',
-    Image: Object.assign(new Image(), { src: './Actor/Animals/Horse/SpriteSheet1.png' }),
+    name: "horse",
+    Image: Object.assign(new Image(), {
+      src: "./Actor/Animals/Horse/SpriteSheet1.png",
+      alt: "horse sprite",
+    }),
     speed: 1.2,
     size: true,
     range: 175,
@@ -18,8 +24,11 @@ export const AnimalMetaData = {
     width: 23,
   },
   horsem: {
-    name: 'horsem',
-    Image: Object.assign(new Image(), { src: './Actor/Animals/Horse/SpriteSheet2.png' }),
+    name: "horsem",
+    Image: Object.assign(new Image(), {
+      src: "./Actor/Animals/Horse/SpriteSheet2.png",
+      alt: "horse sprite",
+    }),
     speed: 1.2,
     size: true,
     range: 175,
@@ -27,8 +36,11 @@ export const AnimalMetaData = {
     width: 23,
   },
   orangeLion: {
-    name: 'orangeLion',
-    Image: Object.assign(new Image(), { src: './Actor/Animals/Lion/SpriteSheetOrange2.png' }),
+    name: "orangeLion",
+    Image: Object.assign(new Image(), {
+      src: "./Actor/Animals/Lion/SpriteSheetOrange2.png",
+      alt: "orange lion sprite",
+    }),
     speed: 1.35,
     size: true,
     range: 150,
@@ -36,8 +48,11 @@ export const AnimalMetaData = {
     width: 35,
   },
   whiteLion: {
-    name: 'whiteLion',
-    Image: Object.assign(new Image(), { src: './Actor/Animals/Lion/SpriteSheetWhite2.png' }),
+    name: "whiteLion",
+    Image: Object.assign(new Image(), {
+      src: "./Actor/Animals/Lion/SpriteSheetWhite2.png",
+      alt: "white lion sprite",
+    }),
     speed: 1.35,
     size: true,
     range: 150,
@@ -46,7 +61,10 @@ export const AnimalMetaData = {
   },
   dog: {
     name: `dog`,
-    Image: Object.assign(new Image(), { src: './Actor/Animals/Dog/SpriteSheet2.png' }),
+    Image: Object.assign(new Image(), {
+      src: "./Actor/Animals/Dog/SpriteSheet2.png",
+      alt: "dog sprite",
+    }),
     speed: 2,
     range: 100,
     height: 16,
@@ -54,7 +72,10 @@ export const AnimalMetaData = {
   },
   frog: {
     name: `frog`,
-    Image: Object.assign(new Image(), { src: './Actor/Animals/Frog/SpriteSheet2.png' }),
+    Image: Object.assign(new Image(), {
+      src: "./Actor/Animals/Frog/SpriteSheet2.png",
+      alt: "frog sprite",
+    }),
     speed: 0.8,
     range: 20,
     height: 16,
@@ -62,7 +83,10 @@ export const AnimalMetaData = {
   },
   brownChicken: {
     name: `brownChicked`,
-    Image: Object.assign(new Image(), { src: './Actor/Animals/Chicken/SpriteSheetBrown2.png' }),
+    Image: Object.assign(new Image(), {
+      src: "./Actor/Animals/Chicken/SpriteSheetBrown2.png",
+      alt: "brown chicken sprite",
+    }),
     speed: 1.5,
     range: 120,
     height: 16,
@@ -70,7 +94,10 @@ export const AnimalMetaData = {
   },
   blackChicken: {
     name: `blackChicken`,
-    Image: Object.assign(new Image(), { src: './Actor/Animals/Chicken/SpriteSheetCute2.png' }),
+    Image: Object.assign(new Image(), {
+      src: "./Actor/Animals/Chicken/SpriteSheetCute2.png",
+      alt: "black chicken sprite",
+    }),
     speed: 1.75,
     range: 80,
     height: 16,
@@ -78,7 +105,10 @@ export const AnimalMetaData = {
   },
   whiteChicken: {
     name: `whiteChicken`,
-    Image: Object.assign(new Image(), { src: './Actor/Animals/Chicken/SpriteSheetWhite2.png' }),
+    Image: Object.assign(new Image(), {
+      src: "./Actor/Animals/Chicken/SpriteSheetWhite2.png",
+      alt: "white chicken sprite",
+    }),
     speed: 1.5,
     range: 120,
     height: 16,
@@ -86,11 +116,14 @@ export const AnimalMetaData = {
   },
   pig: {
     name: `pig`,
-    Image: Object.assign(new Image(), { src: './Actor/Animals/Pig/SpriteSheet2.png' }),
+    Image: Object.assign(new Image(), {
+      src: "./Actor/Animals/Pig/SpriteSheet2.png",
+      alt: "pig sprite",
+    }),
     speed: 1.3,
     size: true,
     range: 60,
     height: 16,
     width: 16,
-  }
-}
+  },
+};

@@ -3,6 +3,7 @@ export const EnemyMetaData = {
     name: `mouse`,
     Image: Object.assign(new Image(), {
       src: "./Actor/Monsters/Mouse/SpriteSheet.png",
+      alt: "mouse",
     }),
     Speed: 1.2,
     Range: 140,
@@ -15,6 +16,7 @@ export const EnemyMetaData = {
     name: `snake`,
     Image: Object.assign(new Image(), {
       src: "./Actor/Monsters/Snake/Snake.png",
+      alt: "snake",
     }),
     Speed: 1.7,
     Range: 190,
@@ -27,6 +29,7 @@ export const EnemyMetaData = {
     name: `racoon`,
     Image: Object.assign(new Image(), {
       src: "./Actor/Monsters/Racoon/SpriteSheet.png",
+      alt: "racoon",
     }),
     Speed: 2.5,
     Range: 150,
@@ -39,6 +42,7 @@ export const EnemyMetaData = {
     name: `bamboo`,
     Image: Object.assign(new Image(), {
       src: "./Actor/Monsters/Bamboo/SpriteSheet.png",
+      alt: "bamboo",
     }),
     Speed: 1.7,
     Range: 150,
@@ -51,6 +55,7 @@ export const EnemyMetaData = {
     name: `mushroom`,
     Image: Object.assign(new Image(), {
       src: "./Actor/Monsters/Mushroom/mushroom.png",
+      alt: "mushroom",
     }),
     Speed: 2,
     Range: 170,
@@ -63,6 +68,7 @@ export const EnemyMetaData = {
     name: `axolot`,
     Image: Object.assign(new Image(), {
       src: "./Actor/Monsters/Axolot/SpriteSheet.png",
+      alt: "axolot",
     }),
     Speed: 1.7,
     Range: 170,
@@ -73,7 +79,10 @@ export const EnemyMetaData = {
   },
   eye: {
     name: `eye`,
-    Image: Object.assign(new Image(), { src: "./Actor/Monsters/Eye/Eye2.png" }),
+    Image: Object.assign(new Image(), {
+      src: "./Actor/Monsters/Eye/Eye2.png",
+      alt: "eye",
+    }),
     Speed: 1.7,
     Range: 210,
     Hp: 60,
@@ -85,6 +94,7 @@ export const EnemyMetaData = {
     name: `spirit`,
     Image: Object.assign(new Image(), {
       src: "./Actor/Monsters/Spirit/SpriteSheet.png",
+      alt: "spirit",
     }),
     Speed: 2.6,
     Range: 170,
@@ -97,6 +107,7 @@ export const EnemyMetaData = {
     name: `skull`,
     Image: Object.assign(new Image(), {
       src: "./Actor/Monsters/Skull/SpriteSheet.png",
+      alt: "skull",
     }),
     Speed: 2.1,
     Range: 180,
@@ -111,6 +122,7 @@ export const EnemyMetaData = {
     name: `larva`,
     Image: Object.assign(new Image(), {
       src: "./Actor/Monsters/Larva/Larva2.png",
+      alt: "larva",
     }),
     Speed: 1.8,
     Range: 230,
@@ -123,6 +135,7 @@ export const EnemyMetaData = {
     name: `slime`,
     Image: Object.assign(new Image(), {
       src: "./Actor/Monsters/Slime/Slime.png",
+      alt: "slime",
     }),
     Speed: 2.7,
     Range: 180,
@@ -133,7 +146,10 @@ export const EnemyMetaData = {
   },
   owl: {
     name: `owl`,
-    Image: Object.assign(new Image(), { src: "./Actor/Monsters/Owl/Owl.png" }),
+    Image: Object.assign(new Image(), {
+      src: "./Actor/Monsters/Owl/Owl.png",
+      alt: "owl",
+    }),
     Speed: 1.8,
     Range: 180,
     Hp: 140,
@@ -145,6 +161,7 @@ export const EnemyMetaData = {
     name: `flame`,
     Image: Object.assign(new Image(), {
       src: "./Actor/Monsters/Flam/SpriteSheet.png",
+      alt: "flame",
     }),
     Speed: 2.2,
     Range: 200,
@@ -158,6 +175,7 @@ export const EnemyMetaData = {
     name: `beast`,
     Image: Object.assign(new Image(), {
       src: "./Actor/Monsters/Beast2/Beast2.png",
+      alt: "beast",
     }),
     Speed: 2.7,
     Range: 220,
@@ -170,6 +188,7 @@ export const EnemyMetaData = {
     name: `skeleton`,
     Image: Object.assign(new Image(), {
       src: "./Actor/Monsters/Skeleton/SpriteSheet.png",
+      alt: "skeleton",
     }),
     Speed: 2.9,
     Range: 280,
@@ -180,7 +199,10 @@ export const EnemyMetaData = {
   },
   boss: {
     name: `boss`,
-    Image: Object.assign(new Image(), { src: "./Actor/Boss/SpriteSheet.png" }),
+    Image: Object.assign(new Image(), {
+      src: "./Actor/Boss/SpriteSheet.png",
+      alt: "boss",
+    }),
     Speed: 1.7,
     Range: 600,
     Hp: 500,
