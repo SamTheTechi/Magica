@@ -9,17 +9,17 @@
 - **Dynamic Gameplay:** Experience a classic 2D RPG with a top-down perspective, featuring a rich and interactive world.
 - **Responsive Design:** Play on any screen size, from desktops to mobile devices.
 - **Pub/Sub Architecture:** A robust event-driven system manages game logic, ensuring a modular and scalable codebase.
-- **Expansive World:** Explore over 20 unique in-game locations, each with its own set of challenges and secrets.
-- **Engaging Story:** Immerse yourself in a captivating narrative with memorable characters and quests.
-- **Multiple Weapons:** Choose from a variety of weapons to suit your playstyle.
-- **Challenging Enemies:** Face a diverse range of enemies, each with its own unique abilities and attack patterns.
+- **Expansive World:** Explore over 20+ unique in-game locations, each with its own set of design and challenges.
+- **Engaging Story:** Immerse yourself in a captivating narrative with the quest.
+- **Multiple Weapons:** Choose from a variety of weapons to suit your playstyle (only one melee and range at a time).
+- **Challenging Enemies:** Face a diverse range of enemies, each with varing hitpoints and range.
 
 ## 🎮 Gameplay
 
 - **Movement:** Control the player using the WASD or arrow keys.
 - **Combat:** Attack enemies with your equipped weapon using the spacebar.
-- **Interaction:** Interact with objects and characters by pressing the "E" key.
-- **Inventory:** Manage your items and equipment in the inventory menu.
+- **Heal:** Heal characters hitpoints by pressing the "Z" key.
+- **Swap Weapons:** Use Shift to swap weapons form range to melee or vice-versa.
 
 ## 🛠️ Tech Stack
 
@@ -35,11 +35,21 @@
 /
 ├── public/ # Static assets (images, sounds, etc.)
 ├── src/ # Source code
-│   ├── classes/ # Game object classes (Player, Enemy, etc.)
+│   │
+│   ├── abjecentLists/ # contains map specific data 
+│   ├── classes/ # Game object classes
 │   ├── constants/ # Game constants (directions, health, etc.)
-│   ├── ui/ # UI components (menus, dialogs, etc.)
+│   ├── meta/ # Infomation about game objects
+│   ├── store/ # States
+│   ├── ui/ # UI components
 │   ├── util/ # Utility functions
-│   └── main.js # Entry point
+│   │
+│   ├── main.js # Entry point
+│   ├── eventListenera.js # All the pub/sub logic
+│   ├── updateLoop.js # Game eventloop
+│   ├── menu.js # Ui elements logic
+│   └── declare.js # init objects
+│
 ├── index.html # Main HTML file
 └── package.json # Project dependencies
 ```
@@ -62,59 +72,23 @@
 
 2. **Install dependencies:**
 
-   Using `bun`:
    ```sh
-   bun install
+   bun install # or npm install
    ```
 
-   Using `npm`:
+3. **Start the Development Server:**
+
    ```sh
-   npm install
+   bun run dev # or bun run dev
    ```
 
-   Using `yarn`:
-   ```sh
-   yarn install
-   ```
+Then open [http://localhost:5173](README.md) in your browser.
 
-   Using `pnpm`:
-   ```sh
-   pnpm install
-   ```
-
-### Running the Development Server
-
-Using `bun`:
-```sh
-bun run dev
-```
-
-Using `npm`:
-```sh
-npm run dev
-```
-
-Using `yarn`:
-```sh
-yarn dev
-```
-
-Using `pnpm`:
-```sh
-pnpm dev
-```
-
-Then open [http://localhost:5173](http.com) in your browser.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to get started.
-
-## 📜 License
+## License
 
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 - All assets used in this project are from [itch.io](https://itch.io/).
 - The game is inspired by the classic "The Legend of Zelda" series.
